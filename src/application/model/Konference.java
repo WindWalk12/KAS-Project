@@ -62,6 +62,7 @@ public class Konference {
     public Udflugt createUdflugt(LocalDate dato, double pris, String navn, Konference konference) {
         Udflugt udflugt = new Udflugt(dato,pris,navn,konference);
         udflugter.add(udflugt);
+        Storage.addUdflugt(udflugt);
         return udflugt;
     }
     //--------------------------------------------------------------------------------------------------------------

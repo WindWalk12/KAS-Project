@@ -15,7 +15,6 @@ public class Controller {
         //opret hoteller
         //opret services
 
-
     }
 
     // -------------------------------------------------------------------------
@@ -36,8 +35,8 @@ public class Controller {
 
     // -------------------------------------------------------------------------
 
-    public static Tilmelding createTilmeldning(double samletPris, Deltager deltager, Konference konference, Hotel hotel, Ledsager ledsager, ArrayList<Service> services) {
-        Tilmelding tilmelding = new Tilmelding(samletPris, deltager, konference, hotel, ledsager, services);
+    public static Tilmelding createTilmeldning(Deltager deltager, Konference konference, Hotel hotel, Ledsager ledsager, ArrayList<Service> services) {
+        Tilmelding tilmelding = new Tilmelding(deltager, konference, hotel, ledsager, services);
         Storage.addTilmelding(tilmelding);
         return tilmelding;
     }

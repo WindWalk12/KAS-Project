@@ -10,8 +10,7 @@ public class Tilmelding {
     private Ledsager ledsager;
     private ArrayList<Service> services;
 
-    public Tilmelding(double samletPris, Deltager deltager, Konference konference, Hotel hotel, Ledsager ledsager, ArrayList<Service> services) {
-        this.samletPris = samletPris;
+    public Tilmelding( Deltager deltager, Konference konference, Hotel hotel, Ledsager ledsager, ArrayList<Service> services) {
         this.deltager = deltager;
         this.konference = konference;
         this.hotel = hotel;
