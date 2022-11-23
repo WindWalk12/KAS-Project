@@ -13,7 +13,8 @@ public class Deltager extends Person {
         this.foredragsholder = foredragsholder;
         this.privatPerson = privatPerson;
     }
-
+    //--------------------------------------------------------------------------------------------------------
+    // association --> 0..* Tilmeldinger
     public ArrayList<Tilmelding> getTilmeldinger() {
         return tilmeldinger;
     }
@@ -24,13 +25,12 @@ public class Deltager extends Person {
             tilmelding.setDeltager(this);
         }
     }
-
     public void removeTilmelding(Tilmelding tilmelding) {
         if (tilmeldinger.contains(tilmelding)) {
             tilmeldinger.remove(tilmelding);
             tilmelding.setDeltager(null);
         }
     }
-
+    //--------------------------------------------------------------------------------------------------------
 
 }

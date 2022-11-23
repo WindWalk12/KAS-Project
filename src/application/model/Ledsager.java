@@ -11,7 +11,8 @@ public class Ledsager extends Person {
     public Ledsager(String navn, String adresse) {
         super(navn, adresse);
     }
-
+//---------------------------------------------------------------------------------------------------------------------
+// association --> 0..* Udflugter
     public ArrayList<Udflugt> getUdflugter() {
         return new ArrayList<>(udflugter);
     }
@@ -28,5 +29,5 @@ public class Ledsager extends Person {
             udflugt.removeLedsager(this);
         }
     }
-
+    //--------------------------------------------------------------------------------------------------------
 }

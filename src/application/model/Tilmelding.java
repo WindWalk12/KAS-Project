@@ -46,7 +46,7 @@ public class Tilmelding {
         }
     }
 //----------------------------------------------------------------------------------------------------------------------
-
+// association --> 1..0..* Deltager
     public Deltager getDeltager() {
         return deltager;
     }
