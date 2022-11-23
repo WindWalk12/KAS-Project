@@ -21,4 +21,9 @@ public class Udflugt {
     public Konference getKonference() {
         return konference;
     }
+
+    //--------------------------------------------------------------------------------------------------------
+
+    public void addLedsager(Ledsager ledsager) {
+    }
 }
