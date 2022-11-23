@@ -36,7 +36,6 @@ public class Konference {
     public void removeHotel(Hotel hotel) {
         if (hoteller.contains(hotel)) {
             hoteller.remove(hotel);
-            Storage.removeHotel(hotel);
             hotel.removeKonference(this);
         }
     }
