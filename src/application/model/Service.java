@@ -1,4 +1,4 @@
-package Application.Model;
+package application.model;
 
 public class Service {
 

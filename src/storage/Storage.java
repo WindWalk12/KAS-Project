@@ -1,6 +1,6 @@
-package Storage;
+package storage;
 
-import Application.Model.*;
+import application.model.*;
 
 import java.util.ArrayList;
 
