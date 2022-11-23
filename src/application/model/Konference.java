@@ -20,7 +20,7 @@ public class Konference {
         this.antalDage = antalDage;
     }
     //------------------------------------------------------------------------------------------------------------------
-    // association --> 0..* Konferencer
+    // association --> 0..* Hoteller
 
     public ArrayList<Hotel> getHoteller() {
         return new ArrayList<>(hoteller);
@@ -38,11 +38,18 @@ public class Konference {
         }
     }
     //----------------------------------------------------------------------------------------------------------------
-
+    // association --> 0..* Tilmeldinger
 
     public ArrayList<Tilmelding> getTilmeldinger() {
         return new ArrayList<>(tilmeldinger);
     }
+    public void addTilmelding(Tilmelding tilmelding) {
+        if (!tilmeldinger.contains(tilmelding)) {
+            tilmeldinger.add(tilmelding);
+            tilmelding.setKonference(this);
+        }
+    }
+
 
     //--------------------------------------------------------------------------------------------------------------
     // composition 1 --- 0..* Udflugter
@@ -55,5 +62,5 @@ public class Konference {
         udflugter.add(udflugt);
         return udflugt;
     }
-
+    //--------------------------------------------------------------------------------------------------------------
 }
