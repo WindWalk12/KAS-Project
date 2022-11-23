@@ -11,6 +11,25 @@ public class Deltager extends Person {
 
     public Deltager(String navn, String adresse) {
         super(navn, adresse);
-
     }
+
+    public ArrayList<Tilmelding> getTilmeldinger() {
+        return tilmeldinger;
+    }
+
+    public void addTilmelding(Tilmelding tilmelding) {
+        if (!tilmeldinger.contains(tilmelding)) {
+            tilmeldinger.add(tilmelding);
+            tilmelding.setDeltager(this);
+        }
+    }
+
+    public void removeTilmelding(Tilmelding tilmelding) {
+        if (tilmeldinger.contains(tilmelding)) {
+            tilmeldinger.remove(tilmelding);
+            tilmelding.setDeltager(null);
+        }
+    }
+
+
 }
