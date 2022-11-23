@@ -1,5 +1,7 @@
 package application.model;
 
+import storage.Storage;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -34,6 +36,7 @@ public class Konference {
     public void removeHotel(Hotel hotel) {
         if (hoteller.contains(hotel)) {
             hoteller.remove(hotel);
+            Storage.removeHotel(hotel);
             hotel.removeKonference(this);
         }
     }
