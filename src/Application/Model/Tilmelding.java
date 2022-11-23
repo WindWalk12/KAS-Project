@@ -1,18 +1,32 @@
 package Application.Model;
 
+import java.util.ArrayList;
+
 public class Tilmelding {
     private double samletPris;
     private Deltager deltager;
     private Konference konference;
     private Hotel hotel;
     private Ledsager ledsager;
+    private ArrayList<Service> services;
 
-    public Tilmelding(double samletPris, Deltager deltager, Konference konference, Hotel hotel, Ledsager ledsager) {
+    public Tilmelding(double samletPris, Deltager deltager, Konference konference, Hotel hotel, Ledsager ledsager, ArrayList<Service> services) {
         this.samletPris = samletPris;
         this.deltager = deltager;
         this.konference = konference;
         this.hotel = hotel;
         this.ledsager = ledsager;
+        this.services = services;
+    }
+
+    private double udregnSamletPris() {
+        return 0;
+    }
+
+    private void addService(Service s) {
+        if (!services.contains(s)) {
+            services.add(s);
+        }
     }
 //----------------------------------------------------------------------------------------------------------------------
     // association --> 0..1 Hotel
