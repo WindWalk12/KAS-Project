@@ -11,7 +11,7 @@ public class Tilmelding {
     private ArrayList<Service> services;
     private int antalDage;
 
-    public Tilmelding( Deltager deltager, Konference konference, Hotel hotel, Ledsager ledsager, ArrayList<Service> services, int antalDage) {
+    public Tilmelding(Deltager deltager, Konference konference, Hotel hotel, Ledsager ledsager, ArrayList<Service> services, int antalDage) {
         this.deltager = deltager;
         this.konference = konference;
         this.hotel = hotel;
