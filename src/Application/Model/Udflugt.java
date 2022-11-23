@@ -15,4 +15,10 @@ public class Udflugt {
         this.navn = navn;
         this.konference = konference;
     }
+
+    public void removeKonference(Konference konference) {
+    }
+
+    public void addKonference(Konference konference) {
+    }
 }

@@ -37,68 +37,14 @@ public class Konference {
             hotel.removeKonference(this);
         }
     }
-    //------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public ArrayList<Tilmelding> getTilmeldinger() {
+        return new ArrayList<>(tilmeldinger);
+    }
 
     // composition 1 --- 0..* Udflugter
-    private final ArrayList<Udflugt> udflugter = new ArrayList<>();
 
     public ArrayList<Udflugt> getUdflugter() {
         return new ArrayList<>(udflugter);
