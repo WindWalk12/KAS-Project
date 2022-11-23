@@ -1,6 +1,4 @@
 package Application.Model;
 
-public class Person {
-
-
+public class Ledsager {
 }
