@@ -45,8 +45,24 @@ public class Tilmelding {
             }
         }
     }
+//----------------------------------------------------------------------------------------------------------------------
+
+    public Deltager getDeltager() {
+        return deltager;
+    }
 
     public void setDeltager(Deltager deltager) {
+        if (this.deltager != deltager) {
+            Deltager oldDeltager = this.deltager;
+            if (oldDeltager != null) {
+                oldDeltager.removeTilmelding(this);
+            }
+            this.deltager = deltager;
+            if (deltager != null) {
+                deltager.addTilmelding(this);
+            }
+        }
+
     }
 }
 //----------------------------------------------------------------------------------------------------------------------
