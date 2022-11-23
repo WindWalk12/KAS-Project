@@ -32,6 +32,7 @@ public class Tilmelding {
         } else if (hotel != null){
             samletPris += ((hotel.getPrisDobbeltVaerelse() + udregnServicesPris()) * (antalDage - 1)) + ledsager.udregnUdflugtPris();
         }
+        this.samletPris = samletPris;
         return samletPris;
     }
 
