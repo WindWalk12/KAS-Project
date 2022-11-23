@@ -31,6 +31,10 @@ public class Deltager extends Person {
             tilmelding.setDeltager(null);
         }
     }
+
+    public boolean getForedragsHolder() {
+        return foredragsholder;
+    }
     //--------------------------------------------------------------------------------------------------------
 
 }

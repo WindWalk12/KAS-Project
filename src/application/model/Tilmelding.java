@@ -22,11 +22,17 @@ public class Tilmelding {
 
     public double udregnSamletPris() {
 
-        if (ledsager == null) {
-            return (konference.getPrisPrDag() * antalDage) + ((hotel.getPris() + udregnServicesPris()) * (antalDage-1));
-        } else {
-            return (konference.getPrisPrDag() * antalDage) + ((hotel.getPrisDobbeltVaerelse() + udregnServicesPris()) * (antalDage-1));
+        double samletPris = 0;
+
+        if (!deltager.getForedragsHolder()) {
+            samletPris += konference.getPrisPrDag() * antalDage;
         }
+        if (hotel != null && ledsager == null) {
+            samletPris += (hotel.getPris() + udregnServicesPris()) * (antalDage-1);
+        } else if (hotel != null){
+            samletPris += ((hotel.getPrisDobbeltVaerelse() + udregnServicesPris()) * (antalDage - 1)) + ledsager.udregnUdflugtPris();
+        }
+        return samletPris;
     }
 
     public double udregnServicesPris() {
@@ -36,6 +42,7 @@ public class Tilmelding {
         }
         return pris;
     }
+
 
     private void addService(Service s) {
         if (!services.contains(s)) {

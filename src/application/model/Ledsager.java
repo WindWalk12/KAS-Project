@@ -30,4 +30,13 @@ public class Ledsager extends Person {
         }
     }
     //--------------------------------------------------------------------------------------------------------
+
+    public double udregnUdflugtPris() {
+        double pris = 0;
+        for (Udflugt udflugt : udflugter) {
+            pris += udflugt.getPris();
+        }
+        return pris;
+    }
+
 }

@@ -42,5 +42,9 @@ public class Udflugt {
             ledsager.removeUdflugt(this);
         }
     }
+
+    public double getPris() {
+        return pris;
+    }
     //--------------------------------------------------------------------------------------------------------
 }
