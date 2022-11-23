@@ -37,4 +37,76 @@ public class Konference {
             hotel.removeKonference(this);
         }
     }
+    //------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // composition 1 --- 0..* Udflugter
+    private final ArrayList<Udflugt> udflugter = new ArrayList<>();
+
+    public ArrayList<Udflugt> getUdflugter() {
+        return new ArrayList<>(udflugter);
+    }
+    public Udflugt opretUdflugt(LocalDate dato, double pris, String navn, Konference konference) {
+        Udflugt udflugt = new Udflugt(dato,pris,navn,konference);
+        udflugter.add(udflugt);
+        return udflugt;
+    }
+
 }
