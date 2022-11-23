@@ -44,6 +44,7 @@ public class Konference {
         return new ArrayList<>(tilmeldinger);
     }
 
+    //--------------------------------------------------------------------------------------------------------------
     // composition 1 --- 0..* Udflugter
 
     public ArrayList<Udflugt> getUdflugter() {
