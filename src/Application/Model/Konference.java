@@ -13,7 +13,10 @@ public class Konference {
     private ArrayList<Udflugt> udflugter = new ArrayList<>();
     private ArrayList<Hotel> hoteller = new ArrayList<>();
 
-
-
-
+    public Konference(String navn, String adresse, LocalDate startDato, int antalDage) {
+        this.navn = navn;
+        this.adresse = adresse;
+        this.startDato = startDato;
+        this.antalDage = antalDage;
+    }
 }
