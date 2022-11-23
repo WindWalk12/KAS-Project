@@ -57,7 +57,7 @@ public class Konference {
     public ArrayList<Udflugt> getUdflugter() {
         return new ArrayList<>(udflugter);
     }
-    public Udflugt opretUdflugt(LocalDate dato, double pris, String navn, Konference konference) {
+    public Udflugt createUdflugt(LocalDate dato, double pris, String navn, Konference konference) {
         Udflugt udflugt = new Udflugt(dato,pris,navn,konference);
         udflugter.add(udflugt);
         return udflugt;
