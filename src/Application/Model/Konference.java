@@ -11,6 +11,7 @@ public class Konference {
     private int antalDage;
     private ArrayList<Tilmelding> tilmeldinger = new ArrayList<>();
     private ArrayList<Udflugt> udflugter = new ArrayList<>();
+    private ArrayList<Hotel> hoteller = new ArrayList<>();
 
 
 
