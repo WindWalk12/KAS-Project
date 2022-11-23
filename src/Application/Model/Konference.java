@@ -10,6 +10,7 @@ public class Konference {
     private LocalDate startDato;
     private int antalDage;
     private ArrayList<Tilmelding> tilmeldinger = new ArrayList<>();
+    private ArrayList<Udflugt> udflugter = new ArrayList<>();
 
 
 
