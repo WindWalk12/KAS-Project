@@ -1,5 +1,7 @@
 package application.model;
 
+import storage.Storage;
+
 import java.util.ArrayList;
 
 public class Hotel {
@@ -30,6 +32,7 @@ public class Hotel {
 
     public Service createService(String navn, double pris) {
         Service service = new Service(navn, pris);
+        Storage.addService(service);
         services.add(service);
         return service;
     }
