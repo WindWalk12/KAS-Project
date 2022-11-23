@@ -14,4 +14,22 @@ public class Tilmelding {
         this.hotel = hotel;
         this.ledsager = ledsager;
     }
+//----------------------------------------------------------------------------------------------------------------------
+    // association --> 0..1 Hotel
+    public Hotel getHotel() {
+    return hotel;
 }
+    public void setHotel(Hotel hotel) {
+        if (this.hotel != hotel) {
+            Hotel oldHotel = this.hotel;
+            if (oldHotel != null) {
+                oldHotel.removeTilmelding(this);
+            }
+            this.hotel = hotel;
+            if (hotel != null) {
+                hotel.addTilmelding(this);
+            }
+        }
+    }
+}
+//----------------------------------------------------------------------------------------------------------------------
