@@ -8,5 +8,6 @@ public class Service {
     public Service (String navn, double pris){
         this.navn = navn;
         this.pris = pris;
+
     }
 }
