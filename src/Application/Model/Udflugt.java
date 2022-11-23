@@ -16,9 +16,9 @@ public class Udflugt {
         this.konference = konference;
     }
 
-    public void removeKonference(Konference konference) {
-    }
-
-    public void addKonference(Konference konference) {
+    //--------------------------------------------------------------------------------------------------------
+    // composition 0..* --- 1 Konference
+    public Konference getKonference() {
+        return konference;
     }
 }
