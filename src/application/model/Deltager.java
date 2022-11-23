@@ -7,10 +7,11 @@ public class Deltager extends Person {
     private ArrayList<Tilmelding> tilmeldinger = new ArrayList<>();
     private boolean foredragsholder;
     private boolean privatPerson;
-    private String firma;
 
-    public Deltager(String navn, String adresse) {
+    public Deltager(String navn, String adresse, boolean foredragsholder, boolean privatPerson) {
         super(navn, adresse);
+        this.foredragsholder = foredragsholder;
+        this.privatPerson = privatPerson;
     }
 
     public ArrayList<Tilmelding> getTilmeldinger() {
