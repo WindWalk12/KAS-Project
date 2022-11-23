@@ -59,4 +59,30 @@ public class Hotel {
             tilmelding.setHotel(null);
         }
     }
+    //---------------------------------------------------------------------------------------------------------------------
+    // association --> 0..* Konferencer
+
+    public ArrayList<Konference> getKonferencer() {
+        return new ArrayList<>(konferencer);
+    }
+    public void addKonference(Konference konference) {
+        if (!konferencer.contains(konference)) {
+            konferencer.add(konference);
+            konference.addHotel(this);
+        }
+    }
+    public void removeKonference(Konference konference) {
+        if (konferencer.contains(konference)) {
+            konferencer.remove(konference);
+            konference.removeHotel(this);
+        }
+    }
 }
+
+
+
+
+
+
+
+

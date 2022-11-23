@@ -19,4 +19,22 @@ public class Konference {
         this.startDato = startDato;
         this.antalDage = antalDage;
     }
+    //------------------------------------------------------------------------------------------------------------------
+    // association --> 0..* Konferencer
+
+    public ArrayList<Hotel> getHoteller() {
+        return new ArrayList<>(hoteller);
+    }
+    public void addHotel(Hotel hotel) {
+        if (!hoteller.contains(hotel)) {
+            hoteller.add(hotel);
+            hotel.addKonference(this);
+        }
+    }
+    public void removeHotel(Hotel hotel) {
+        if (hoteller.contains(hotel)) {
+            hoteller.remove(hotel);
+            hotel.removeKonference(this);
+        }
+    }
 }
