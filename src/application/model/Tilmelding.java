@@ -9,17 +9,32 @@ public class Tilmelding {
     private Hotel hotel;
     private Ledsager ledsager;
     private ArrayList<Service> services;
+    private int antalDage;
 
-    public Tilmelding( Deltager deltager, Konference konference, Hotel hotel, Ledsager ledsager, ArrayList<Service> services) {
+    public Tilmelding( Deltager deltager, Konference konference, Hotel hotel, Ledsager ledsager, ArrayList<Service> services, int antalDage) {
         this.deltager = deltager;
         this.konference = konference;
         this.hotel = hotel;
         this.ledsager = ledsager;
         this.services = services;
+        this.antalDage = antalDage;
     }
 
-    private double udregnSamletPris() {
-        return 0;
+    public double udregnSamletPris() {
+
+        if (ledsager == null) {
+            return (konference.getPrisPrDag() * antalDage) + ((hotel.getPris() + udregnServicesPris()) * (antalDage-1));
+        } else {
+            return (konference.getPrisPrDag() * antalDage) + ((hotel.getPrisDobbeltVaerelse() + udregnServicesPris()) * (antalDage-1));
+        }
+    }
+
+    public double udregnServicesPris() {
+        double pris = 0;
+        for (Service service : services) {
+            pris += service.getPris();
+        }
+        return pris;
     }
 
     private void addService(Service s) {

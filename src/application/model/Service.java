@@ -10,4 +10,9 @@ public class Service {
         this.pris = pris;
 
     }
+
+    public Double getPris() {
+        return pris;
+    }
+
 }

@@ -19,8 +19,8 @@ public class Controller {
 
     // -------------------------------------------------------------------------
 
-    public static Konference createKonference(String navn, String adresse, LocalDate startDato, int antalDage) {
-        Konference konference = new Konference(navn, adresse, startDato, antalDage);
+    public static Konference createKonference(String navn, String adresse, LocalDate startDato, int antalDage, double prisPrDag) {
+        Konference konference = new Konference(navn, adresse, startDato, antalDage, prisPrDag);
         Storage.addKonference(konference);
         return konference;
     }
@@ -35,8 +35,8 @@ public class Controller {
 
     // -------------------------------------------------------------------------
 
-    public static Tilmelding createTilmeldning(Deltager deltager, Konference konference, Hotel hotel, Ledsager ledsager, ArrayList<Service> services) {
-        Tilmelding tilmelding = new Tilmelding(deltager, konference, hotel, ledsager, services);
+    public static Tilmelding createTilmeldning(Deltager deltager, Konference konference, Hotel hotel, Ledsager ledsager, ArrayList<Service> services, int antalDage) {
+        Tilmelding tilmelding = new Tilmelding(deltager, konference, hotel, ledsager, services, antalDage);
         Storage.addTilmelding(tilmelding);
         return tilmelding;
     }

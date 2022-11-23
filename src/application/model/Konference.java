@@ -11,15 +11,17 @@ public class Konference {
     private String adresse;
     private LocalDate startDato;
     private int antalDage;
+    private double prisPrDag;
     private ArrayList<Tilmelding> tilmeldinger = new ArrayList<>();
     private ArrayList<Udflugt> udflugter = new ArrayList<>();
     private ArrayList<Hotel> hoteller = new ArrayList<>();
 
-    public Konference(String navn, String adresse, LocalDate startDato, int antalDage) {
+    public Konference(String navn, String adresse, LocalDate startDato, int antalDage, double prisPrDag) {
         this.navn = navn;
         this.adresse = adresse;
         this.startDato = startDato;
         this.antalDage = antalDage;
+        this.prisPrDag = prisPrDag;
     }
     //------------------------------------------------------------------------------------------------------------------
     // association --> 0..* Hoteller
@@ -64,6 +66,10 @@ public class Konference {
         udflugter.add(udflugt);
         Storage.addUdflugt(udflugt);
         return udflugt;
+    }
+
+    public double getPrisPrDag() {
+        return prisPrDag;
     }
     //--------------------------------------------------------------------------------------------------------------
 }

@@ -80,6 +80,14 @@ public class Hotel {
             konference.removeHotel(this);
         }
     }
+
+    public Double getPris() {
+        return  pris;
+    }
+
+    public Double getPrisDobbeltVaerelse() {
+        return prisDobbeltVaerelse;
+    }
 }
 
 
