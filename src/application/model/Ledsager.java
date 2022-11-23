@@ -23,7 +23,7 @@ public class Ledsager extends Person {
     public void removeUdflugt(Udflugt udflugt) {
         if (udflugter.contains(udflugt)) {
             udflugter.remove(udflugt);
-            konference.removeHotel(this);
+            udflugt.removeLedsager(this);
         }
     }
 
