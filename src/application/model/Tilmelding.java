@@ -37,8 +37,11 @@ public class Tilmelding {
 
     public double udregnServicesPris() {
         double pris = 0;
-        for (Service service : services) {
-            pris += service.getPris();
+
+        if (services != null) {
+            for (Service service : services) {
+                pris += service.getPris();
+            }
         }
         return pris;
     }
