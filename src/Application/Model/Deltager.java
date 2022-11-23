@@ -9,8 +9,8 @@ public class Deltager extends Person {
     private boolean privatPerson;
     private String firma;
 
-    public Deltager(String navn, int alder, String adresse, String tlfNummer, String email) {
-        super(navn, alder, adresse, tlfNummer, email);
+    public Deltager(String navn, String adresse) {
+        super(navn, adresse);
 
     }
 }
