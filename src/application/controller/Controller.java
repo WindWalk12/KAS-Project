@@ -10,60 +10,57 @@ public class Controller {
 
     public static void initStorage() {
 
-    //konferencer
-    Konference k = Controller.createKonference("Hav og Himmel", "Odense Universitet", LocalDate.of(2022, 5, 18), 2, 1500);
+        //konferencer
+        Konference k = Controller.createKonference("Hav og Himmel", "Odense Universitet", LocalDate.of(2022, 5, 18), 2, 1500);
 
-    //udflugter
-    Udflugt u1 = k.createUdflugt(LocalDate.of(2022,5,18), 125, "Byrundtur, Odense", k);
-    Udflugt u2 = k.createUdflugt(LocalDate.of(2022, 5, 19), 75, "Egeskov", k);
-    Udflugt u3 = k.createUdflugt(LocalDate.of(2022,5,20),200, "Trapholt Museum, Kolding", k);
+        //udflugter
+        Udflugt u1 = k.createUdflugt(LocalDate.of(2022,5,18), 125, "Byrundtur, Odense", k);
+        Udflugt u2 = k.createUdflugt(LocalDate.of(2022, 5, 19), 75, "Egeskov", k);
+        Udflugt u3 = k.createUdflugt(LocalDate.of(2022,5,20),200, "Trapholt Museum, Kolding", k);
 
-    //hoteller
-    Hotel h1 = Controller.createHotel(1050, 1250, "Den Hvide Svane");
+        //hoteller
+        Hotel h1 = Controller.createHotel(1050, 1250, "Den Hvide Svane");
 
-    Service s1 = h1.createService("WIFI",50);
-    ArrayList<Service> services1 = new ArrayList<>();
-    services1.add(s1);
+        Service s1 = h1.createService("WIFI",50);
+        ArrayList<Service> services1 = new ArrayList<>();
+        services1.add(s1);
 
-    Hotel h2 = Controller.createHotel(700, 800, "Høtel Phønix");
-    h2.createService("Bad", 200);
-    h2.createService("WIFI", 75);
+        Hotel h2 = Controller.createHotel(700, 800, "Høtel Phønix");
+        h2.createService("Bad", 200);
+        h2.createService("WIFI", 75);
 
-    Hotel h3 = Controller.createHotel(500, 600, "Pension Tusindfryd");
-    h3.createService("Morgenmad", 100);
+        Hotel h3 = Controller.createHotel(500, 600, "Pension Tusindfryd");
+        h3.createService("Morgenmad", 100);
 
-    //deltagere
+        //deltagere
+        Deltager d1 =  Controller.createDeltager("Finn Madsen", "Solsikkevej 3", false, true);
+        Deltager d2 = Controller.createDeltager("Niels Petersen", "Lortevej 21", false, true);
+        Deltager d3 = Controller.createDeltager("Peter Sommer", "Numsevej 1", false, true);
+        Deltager d4 = Controller.createDeltager("Lone Jensen", "Kaninhulvej 35", true, false); //privatPerson to be decided
 
-    Deltager d1 =  Controller.createDeltager("Finn Madsen", "Solsikkevej 3", false, true);
-    Deltager d2 = Controller.createDeltager("Niels Petersen", "Lortevej 21", false, true);
-    Deltager d3 = Controller.createDeltager("Peter Sommer", "Numsevej 1", false, true);
-    Deltager d4 = Controller.createDeltager("Lone Jensen", "Kaninhulvej 35", true, false); //privatPerson to be decided
+        //ledsagere
+        Ledsager l1 = Controller.createLedsager("Mie Sommer", "bgdsfsdfhdsfhvej 2");
+        l1.addUdflugt(u2);
+        l1.addUdflugt(u3);
+        Ledsager l2 = Controller.createLedsager("Jan Madsen", "Hundehulvej 53");
+        l2.addUdflugt(u1);
+        l2.addUdflugt(u2);
 
-    //ledsagere
-    Ledsager l1 = Controller.createLedsager("Mie Sommer", "bgdsfsdfhdsfhvej 2");
-    l1.addUdflugt(u2);
-    l1.addUdflugt(u3);
-    Ledsager l2 = Controller.createLedsager("Jan Madsen", "Hundehulvej 53");
-    l2.addUdflugt(u1);
-    l2.addUdflugt(u2);
+        //tilmeldinger
+        Tilmelding t1 = Controller.createTilmeldning(d1, k, null, null, null, 3);
+        Tilmelding t2 = Controller.createTilmeldning(d2, k, h1, null, null, 3);
+        Tilmelding t3 = Controller.createTilmeldning(d3, k, h1, l1, services1, 3);
+        Tilmelding t4 = Controller.createTilmeldning(d4, k, h1, l2, services1, 3);
 
-    //tilmeldinger
-    Tilmelding t1 = Controller.createTilmeldning(d1, k, null, null, null, 3);
-    Tilmelding t2 = Controller.createTilmeldning(d2, k, h1, null, null, 3);
-    Tilmelding t3 = Controller.createTilmeldning(d3, k, h1, l1, services1, 3);
-    Tilmelding t4 = Controller.createTilmeldning(d4, k, h1, l2, services1, 3);
+        k.addTilmelding(t1);
+        k.addTilmelding(t2);
+        k.addTilmelding(t3);
+        k.addTilmelding(t4);
 
-
-
-
-
-
-
-
-        //opret konferencer
-        //opret deltagere og ledsagere
-        //opret hoteller
-        //opret services
+        t1.udregnSamletPris();
+        t2.udregnSamletPris();
+        t3.udregnSamletPris();
+        t4.udregnSamletPris();
 
     }
 

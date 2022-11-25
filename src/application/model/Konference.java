@@ -71,5 +71,41 @@ public class Konference {
     public double getPrisPrDag() {
         return prisPrDag;
     }
-    //--------------------------------------------------------------------------------------------------------------
+
+    public String getNavn() {
+        return navn;
+    }
+
+    public void setNavn(String navn) {
+        this.navn = navn;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public LocalDate getStartDato() {
+        return startDato;
+    }
+
+    public void setStartDato(LocalDate startDato) {
+        this.startDato = startDato;
+    }
+
+    public int getAntalDage() {
+        return antalDage;
+    }
+
+    public void setAntalDage(int antalDage) {
+        this.antalDage = antalDage;
+    }
+
+    @Override
+    public String toString() {
+        return navn;
+    }
 }

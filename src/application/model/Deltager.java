@@ -35,6 +35,10 @@ public class Deltager extends Person {
     public boolean getForedragsHolder() {
         return foredragsholder;
     }
+
+    public String getNavn() {
+        return super.getNavn();
+    }
     //--------------------------------------------------------------------------------------------------------
 
 }
