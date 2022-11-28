@@ -106,4 +106,8 @@ public class Tilmelding {
     public double getSamletPris() {
         return samletPris;
     }
+
+    public Ledsager getLedsager() {
+        return ledsager;
+    }
 }

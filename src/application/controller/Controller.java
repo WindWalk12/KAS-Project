@@ -14,9 +14,9 @@ public class Controller {
         Konference k = Controller.createKonference("Hav og Himmel", "Odense Universitet", LocalDate.of(2022, 5, 18), 3, 1500);
 
         //udflugter
-        Udflugt u1 = k.createUdflugt(LocalDate.of(2022,5,18), 125, "Byrundtur, Odense", k);
-        Udflugt u2 = k.createUdflugt(LocalDate.of(2022, 5, 19), 75, "Egeskov", k);
-        Udflugt u3 = k.createUdflugt(LocalDate.of(2022,5,20),200, "Trapholt Museum, Kolding", k);
+        Udflugt u1 = k.createUdflugt(LocalDate.of(2022,5,18), 125, "Byrundtur, Odense");
+        Udflugt u2 = k.createUdflugt(LocalDate.of(2022, 5, 19), 75, "Egeskov");
+        Udflugt u3 = k.createUdflugt(LocalDate.of(2022,5,20),200, "Trapholt Museum, Kolding");
 
         //hoteller
         Hotel h1 = Controller.createHotel(1050, 1250, "Den Hvide Svane");
@@ -26,11 +26,11 @@ public class Controller {
         services1.add(s1);
 
         Hotel h2 = Controller.createHotel(700, 800, "Høtel Phønix");
-        h2.createService("Bad", 200);
-        h2.createService("WIFI", 75);
+        Controller.createService("Bad", 200, h2);
+        Controller.createService("WIFI", 75, h2);
 
         Hotel h3 = Controller.createHotel(500, 600, "Pension Tusindfryd");
-        h3.createService("Morgenmad", 100);
+        Controller.createService("Morgenmad", 100, h3);
 
         //deltagere
         Deltager d1 =  Controller.createDeltager("Finn Madsen", "Solsikkevej 3", false, true);
@@ -143,6 +143,11 @@ public class Controller {
 
     // -------------------------------------------------------------------------
 
+    public Udflugt createUdflugt(LocalDate dato, double pris, String navn, Konference konference) {
+        Udflugt udflugt = konference.createUdflugt(dato, pris, navn);
+        return udflugt;
+    }
+
     public static void deleteUdflugt(Udflugt udflugt) {
         Storage.removeUdflugt(udflugt);
     }
@@ -168,6 +173,11 @@ public class Controller {
     }
 
     // -------------------------------------------------------------------------
+
+    public static Service createService(String navn, double pris, Hotel hotel) {
+        Service service = hotel.createService(navn, pris);
+        return service;
+    }
 
     public static void deleteService(Service service) {
         Storage.removeService(service);

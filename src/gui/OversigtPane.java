@@ -86,7 +86,11 @@ public class OversigtPane extends GridPane {
             txfTjen.setText(konference.getFortjeneste() + " dkk");
             StringBuilder sb = new StringBuilder();
             for (Tilmelding t : konference.getTilmeldinger()) {
-                sb.append(t.getDeltager().getNavn() + "\n");
+                if (t.getLedsager() != null) {
+                    sb.append(t.getDeltager().getNavn() + " (" + t.getLedsager().getNavn() + ")" + "\n");
+                } else {
+                    sb.append(t.getDeltager().getNavn() + "\n");
+                }
             }
             txaTilm.setText(sb.toString());
         } else {

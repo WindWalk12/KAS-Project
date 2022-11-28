@@ -35,6 +35,12 @@ public class Hotel {
         return service;
     }
 
+    public void addService(Service service) {
+        if (!services.contains(service)) {
+            services.add(service);
+        }
+    }
+
     public void removeService(Service service) {
         if (services.contains(service)) {
             services.remove(service);
