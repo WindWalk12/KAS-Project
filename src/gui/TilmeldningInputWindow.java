@@ -278,7 +278,6 @@ public class TilmeldningInputWindow extends Stage {
                     }
                     Deltager actualDeltager = Controller.createDeltager(name, address, chkFord.isSelected(), chkPriv.isSelected());
                     Tilmelding actualTilmeldning = Controller.createTilmeldning(actualDeltager, cboKonf.getValue(), lvwHotels.getSelectionModel().getSelectedItem(), actualLedsager, checkedServices, iDays);
-                    cboKonf.getValue().addTilmelding(actualTilmeldning);
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Pris for tilmeldning");
                     alert.setHeaderText("Tak for tilmeldningen");
@@ -312,7 +311,6 @@ public class TilmeldningInputWindow extends Stage {
                 }
                 Deltager actualDeltager = Controller.createDeltager(name, address, chkFord.isSelected(), chkPriv.isSelected());
                 Tilmelding actualTilmeldning = Controller.createTilmeldning(actualDeltager, cboKonf.getValue(), null, actualLedsager, null, iDays);
-                cboKonf.getValue().addTilmelding(actualTilmeldning);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Pris for tilmeldning");
                 alert.setHeaderText("Tak for tilmeldningen");
@@ -338,7 +336,6 @@ public class TilmeldningInputWindow extends Stage {
             chkHotel.setSelected(false);
             Deltager actualDeltager = Controller.createDeltager(name, address, chkFord.isSelected(), chkPriv.isSelected());
             Tilmelding actualTilmeldning = Controller.createTilmeldning(actualDeltager, cboKonf.getValue(), null, null, null, iDays);
-            cboKonf.getValue().addTilmelding(actualTilmeldning);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Pris for tilmeldning");
             alert.setHeaderText("Tak for tilmeldningen");

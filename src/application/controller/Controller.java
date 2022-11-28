@@ -97,6 +97,7 @@ public class Controller {
 
     public static Tilmelding createTilmeldning(Deltager deltager, Konference konference, Hotel hotel, Ledsager ledsager, ArrayList<Service> services, int antalDage) {
         Tilmelding tilmelding = new Tilmelding(deltager, konference, hotel, ledsager, services, antalDage);
+        konference.addTilmelding(tilmelding);
         Storage.addTilmelding(tilmelding);
         return tilmelding;
     }
