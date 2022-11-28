@@ -33,6 +33,8 @@ public class KonferenceWindow extends Stage {
 
     private final TextField txfName = new TextField();
     private final TextField txfAddress = new TextField();
+    private final TextField txfPrisPrDag = new TextField();
+    private final TextField txfAntalDage = new TextField();
     private Tilmelding actualTilmeldning = null;
 
     private void initContent(GridPane pane) {
@@ -49,9 +51,16 @@ public class KonferenceWindow extends Stage {
         pane.add(lblAddress, 0, 1);
         pane.add(txfAddress, 1,1,2,1);
 
+        Label lblPrisPrDag = new Label("Pris Per Dag:");
+        pane.add(lblPrisPrDag, 0, 2);
+        pane.add(txfPrisPrDag, 1,2,2,1);
+
+        Label lblAntalDage = new Label("Antal Dage:");
+        pane.add(lblAntalDage, 0, 3);
+        pane.add(txfAntalDage, 1,3,2,1);
 
         HBox buttonBox = new HBox(20);
-        pane.add(buttonBox, 0, 3);
+        pane.add(buttonBox, 0, 4);
         buttonBox.setPadding(new Insets(10, 10, 0, 10));
         buttonBox.setAlignment(Pos.TOP_RIGHT);
 
