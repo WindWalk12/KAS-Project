@@ -2,7 +2,6 @@ package gui;
 
 import application.controller.Controller;
 import application.model.Konference;
-import application.model.Tilmelding;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -15,9 +14,9 @@ import javafx.stage.StageStyle;
 
 import java.time.LocalDate;
 
-public class UpdateWindow extends Stage {
+public class KonferenceUpdateWindow extends Stage {
 
-    public UpdateWindow(String title, Stage owner, Konference konference) {
+    public KonferenceUpdateWindow(String title, Stage owner, Konference konference) {
         this.initOwner(owner);
         this.initStyle(StageStyle.UTILITY);
         this.initModality(Modality.APPLICATION_MODAL);
@@ -92,7 +91,7 @@ public class UpdateWindow extends Stage {
 
     private void cancelAction() {
         txfName.clear();
-        UpdateWindow.this.hide();
+        KonferenceUpdateWindow.this.hide();
     }
 
     private void okAction() {
@@ -116,7 +115,7 @@ public class UpdateWindow extends Stage {
             txfAddress.clear();
             txfPrisPrDag.clear();
             Controller.updateKonference(konference,name,adresse,prisPerDag,antalDage,startDato);
-            UpdateWindow.this.hide();
+            KonferenceUpdateWindow.this.hide();
 
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

@@ -2,7 +2,6 @@ package gui;
 
 import application.controller.Controller;
 import application.model.Konference;
-import application.model.Tilmelding;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
@@ -15,7 +14,7 @@ public class KonferencePane extends GridPane {
     private HBox btnBox;
     private TilmeldningInputWindow tilmeldWindow;
     private KonferenceWindow konferenceWindow;
-    private UpdateWindow updateWindow;
+    private KonferenceUpdateWindow konferenceUpdateWindow;
 
     public KonferencePane() {
         this.setPadding(new Insets(20));
@@ -68,8 +67,8 @@ public class KonferencePane extends GridPane {
     private void updateAction() {
         Konference konference = lvwKonferencer.getSelectionModel().getSelectedItem();
         if (konference != null) {
-            updateWindow = new UpdateWindow("Updater konference", new Stage(),konference);
-            updateWindow.showAndWait();
+            konferenceUpdateWindow = new KonferenceUpdateWindow("Updater konference", new Stage(),konference);
+            konferenceUpdateWindow.showAndWait();
 
             // Wait for the modal dialog to close
 
