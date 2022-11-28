@@ -43,4 +43,9 @@ public class KonferencePane extends GridPane {
     }
 
     // -------------------------------------------------------------------------
+
+    private void createAction() {
+
+    }
+
 }
