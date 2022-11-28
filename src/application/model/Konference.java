@@ -108,6 +108,14 @@ public class Konference {
         this.prisPrDag = prisPrDag;
     }
 
+    public double getFortjeneste() {
+        double fortjenste = 0;
+        for (Tilmelding t : tilmeldinger) {
+            fortjenste += t.getSamletPris();
+        }
+        return fortjenste;
+    }
+
     @Override
     public String toString() {
         return navn;

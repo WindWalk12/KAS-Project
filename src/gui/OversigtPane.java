@@ -12,7 +12,7 @@ import javafx.scene.layout.GridPane;
 public class OversigtPane extends GridPane {
     private ListView<Konference> lvwKonferencer;
     private TextArea txaTilm;
-    private TextField txfaddr, txfSDato, txfADage;
+    private TextField txfaddr, txfSDato, txfADage, txfTjen;
 
     public OversigtPane() {
         this.setPadding(new Insets(20));
@@ -24,7 +24,7 @@ public class OversigtPane extends GridPane {
         this.add(lblKonf, 0, 0);
 
         lvwKonferencer = new ListView<>();
-        this.add(lvwKonferencer, 0, 1, 1, 5);
+        this.add(lvwKonferencer, 0, 1, 1, 6);
         lvwKonferencer.setPrefWidth(200);
         lvwKonferencer.setPrefHeight(300);
         lvwKonferencer.getItems().setAll(Controller.getKonferencerer());
@@ -49,11 +49,17 @@ public class OversigtPane extends GridPane {
         this.add(txfADage, 3, 3);
         txfADage.setEditable(false);
 
+        Label lblTjen = new Label("Fortjenste:");
+        this.add(lblTjen, 2, 4);
+        txfTjen = new TextField();
+        this.add(txfTjen, 3, 4);
+        txfTjen.setEditable(false);
+
         Label lblDelt = new Label("Tilmeldte:");
-        this.add(lblDelt, 2, 4);
+        this.add(lblDelt, 2, 5);
 
         txaTilm = new TextArea();
-        this.add(txaTilm, 2, 5, 2, 1);
+        this.add(txaTilm, 2, 6, 2, 1);
         txaTilm.setPrefWidth(200);
         txaTilm.setPrefHeight(100);
         txaTilm.setEditable(false);
@@ -77,6 +83,7 @@ public class OversigtPane extends GridPane {
             txfaddr.setText(konference.getAdresse());
             txfSDato.setText(konference.getStartDato().toString());
             txfADage.setText(String.valueOf(konference.getAntalDage()));
+            txfTjen.setText(konference.getFortjeneste() + " dkk");
             StringBuilder sb = new StringBuilder();
             for (Tilmelding t : konference.getTilmeldinger()) {
                 sb.append(t.getDeltager().getNavn() + "\n");
@@ -87,6 +94,7 @@ public class OversigtPane extends GridPane {
             txfaddr.clear();
             txfSDato.clear();
             txfADage.clear();
+            txfTjen.clear();
         }
     }
 }

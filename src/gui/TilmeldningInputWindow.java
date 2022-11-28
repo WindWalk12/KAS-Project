@@ -25,7 +25,7 @@ public class TilmeldningInputWindow extends Stage {
         this.initModality(Modality.APPLICATION_MODAL);
         this.setMinHeight(100);
         this.setMinWidth(200);
-        this.setHeight(580);
+        //this.setHeight(580);
         this.setResizable(false);
 
         this.setTitle(title);
@@ -45,7 +45,7 @@ public class TilmeldningInputWindow extends Stage {
     Label lblLAddress = new Label("Ledsagers Adresse:");
     Label lblDays = new Label();
     Label lblServ = new Label("Services");
-    Label lblUdflugter = new Label("Udflugter?");
+    Label lblUdflugter = new Label("Udflugter");
     private CheckBox chkFord, chkPriv, chkLeds, chkHotel;
     private CheckBox[] chkServ;
     private CheckBox[] chkUdflugter;
@@ -71,10 +71,10 @@ public class TilmeldningInputWindow extends Stage {
         txfAddress = new TextField();
         pane.add(txfAddress, 1, 1);
 
-        chkFord = new CheckBox("Fordragsholder?");
+        chkFord = new CheckBox("Fordragsholder");
         pane.add(chkFord, 0, 2);
 
-        chkPriv = new CheckBox("Privat person?");
+        chkPriv = new CheckBox("Privat person");
         pane.add(chkPriv, 1, 2);
 
         Label lblkonf = new Label("Vælg en konference");
@@ -87,40 +87,47 @@ public class TilmeldningInputWindow extends Stage {
 
         pane.add(lblDays, 0, 4);
         lblDays.setVisible(false);
+        lblDays.setManaged(false);
 
         txfDays = new TextField();
         pane.add(txfDays, 1, 4);
         txfDays.setVisible(false);
+        txfDays.setManaged(false);
 
-        chkLeds = new CheckBox("ledsager?");
+        chkLeds = new CheckBox("Ledsager");
         pane.add(chkLeds, 0, 5);
         chkLeds.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                txfLName.setManaged(t1);
                 txfLName.setDisable(aBoolean);
                 txfLName.setVisible(t1);
 
+                lblLName.setManaged(t1);
                 lblLName.setDisable(aBoolean);
                 lblLName.setVisible(t1);
 
+                txfLAddress.setManaged(t1);
                 txfLAddress.setDisable(aBoolean);
                 txfLAddress.setVisible(t1);
 
+                lblLAddress.setManaged(t1);
                 lblLAddress.setDisable(aBoolean);
                 lblLAddress.setVisible(t1);
 
+                vBoxUdflugter.setManaged(t1);
                 vBoxUdflugter.setVisible(t1);
+                lblUdflugter.setManaged(t1);
                 lblUdflugter.setVisible(t1);
+                sizeToScene();
 
                 if (!cboKonf.getSelectionModel().isEmpty()) {
                     vBoxUdflugter.getChildren().clear();
-                    int i = 0;
-                    for (Udflugt u :cboKonf.getValue().getUdflugter()) {
+                    for (int i = 0; i < cboKonf.getValue().getUdflugter().size(); i++) {
                         chkUdflugter[i] = new CheckBox();
-                        chkUdflugter[i].setText(u.getNavn());
-                        chkUdflugter[i].setUserData(u);
+                        chkUdflugter[i].setText(cboKonf.getValue().getUdflugter().get(i).getNavn() + " (" + cboKonf.getValue().getUdflugter().get(i).getPris() + " dkk)");
+                        chkUdflugter[i].setUserData(cboKonf.getValue().getUdflugter().get(i));
                         vBoxUdflugter.getChildren().add(chkUdflugter[i]);
-                        i++;
                     }
                 }
             }
@@ -129,36 +136,46 @@ public class TilmeldningInputWindow extends Stage {
         lblLName.setDisable(true);
         lblLName.setVisible(false);
         pane.add(lblLName, 0, 6);
+        lblLName.setManaged(false);
 
         txfLName.setDisable(true);
         txfLName.setVisible(false);
         pane.add(txfLName, 1, 6);
+        txfLName.setManaged(false);
 
         lblLAddress.setDisable(true);
         lblLAddress.setVisible(false);
         pane.add(lblLAddress, 0, 7);
+        lblLAddress.setManaged(false);
 
         txfLAddress.setDisable(true);
         txfLAddress.setVisible(false);
         pane.add(txfLAddress, 1, 7);
+        txfLAddress.setManaged(false);
 
         pane.add(lblUdflugter, 0, 8);
         lblUdflugter.setVisible(false);
+        lblUdflugter.setManaged(false);
 
         vBoxUdflugter = new VBox();
-        pane.add(vBoxUdflugter, 0, 9);
+        pane.add(vBoxUdflugter, 0, 9, 2 ,1);
+        vBoxUdflugter.setManaged(false);
 
-        chkHotel = new CheckBox("Hotel?");
+        chkHotel = new CheckBox("Hotel");
         pane.add(chkHotel, 0, 10);
 
         chkHotel.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                lvwHotels.setManaged(t1);
                 lvwHotels.setDisable(aBoolean);
                 lvwHotels.setVisible(t1);
 
+                lblServ.setManaged(t1);
                 lblServ.setVisible(t1);
+                vBoxServ.setManaged(t1);
                 vBoxServ.setVisible(t1);
+                sizeToScene();
             }
         });
 
@@ -168,15 +185,18 @@ public class TilmeldningInputWindow extends Stage {
         lvwHotels.setVisible(false);
         lvwHotels.setPrefWidth(100);
         lvwHotels.setPrefHeight(100);
+        lvwHotels.setManaged(false);
         ChangeListener<Hotel> listenerHotels = (ov, oldKonference, newKonference) -> this.selectedHotelChanged();
         lvwHotels.getSelectionModel().selectedItemProperty().addListener(listenerHotels);
 
         pane.add(lblServ, 1, 10);
         lblServ.setVisible(false);
+        lblServ.setManaged(false);
 
         vBoxServ = new VBox();
-        pane.add(vBoxServ, 1, 11);
+        pane.add(vBoxServ, 1, 11, 1 , 1);
         vBoxServ.setSpacing(10);
+        vBoxServ.setManaged(false);
 
         HBox buttonBox = new HBox(20);
         pane.add(buttonBox, 0, 12);
@@ -199,20 +219,34 @@ public class TilmeldningInputWindow extends Stage {
         txfName.clear();
         txfAddress.clear();
         txfDays.clear();
+        txfDays.setManaged(false);
+        txfDays.setVisible(false);
         txfLName.clear();
+        txfLName.setManaged(false);
         txfLAddress.clear();
+        txfLAddress.setManaged(false);
         chkFord.setSelected(false);
         chkPriv.setSelected(false);
+        lblDays.setVisible(false);
+        lblDays.setManaged(false);
         lblUdflugter.setVisible(false);
+        lblUdflugter.setManaged(false);
         vBoxServ.setVisible(false);
+        vBoxServ.setManaged(false);
         vBoxUdflugter.setVisible(false);
+        vBoxUdflugter.setManaged(false);
         chkLeds.setSelected(false);
-        if (chkHotel.isSelected()) {
+        if (!lvwHotels.getSelectionModel().isEmpty()) {
             for (CheckBox checkBox : chkServ) {
                 checkBox.setSelected(false);
+                checkBox.setVisible(false);
             }
         }
         chkHotel.setSelected(false);
+        cboKonf.getSelectionModel().clearSelection();
+        lvwHotels.getSelectionModel().clearSelection();
+        lvwHotels.getItems().clear();
+        lvwHotels.setManaged(false);
         TilmeldningInputWindow.this.hide();
     }
 
@@ -253,7 +287,6 @@ public class TilmeldningInputWindow extends Stage {
                     alert.setContentText("Det kommer til at koste " + actualTilmeldning.udregnSamletPris() + " dkk");
                     alert.show();
                     cancelAction();
-                    TilmeldningInputWindow.this.hide();
                 }  else {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Tilmeldning af deltager");
@@ -288,7 +321,6 @@ public class TilmeldningInputWindow extends Stage {
                 alert.setContentText("Det kommer til at koste " + actualTilmeldning.udregnSamletPris() + " dkk");
                 alert.show();
                 cancelAction();
-                TilmeldningInputWindow.this.hide();
             } else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Tilmeldning af deltager");
@@ -300,7 +332,7 @@ public class TilmeldningInputWindow extends Stage {
             txfName.clear();
             txfAddress.clear();
             txfDays.clear();
-            if (chkHotel.isSelected()) {
+            if (!lvwHotels.getSelectionModel().isEmpty()) {
                 for (CheckBox checkBox : chkServ) {
                     checkBox.setSelected(false);
                 }
@@ -315,12 +347,11 @@ public class TilmeldningInputWindow extends Stage {
             alert.setContentText("Det kommer til at koste " + actualTilmeldning.udregnSamletPris() + " dkk");
             alert.show();
             cancelAction();
-            TilmeldningInputWindow.this.hide();
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Tilmeldning af deltager");
             alert.setHeaderText("Der mangler information");
-            alert.setContentText("Indtast venligst de manglende informationer \n" + "Antal dage kan maks være " + cboKonf.getValue().getAntalDage() + " og ned til 1");
+            alert.setContentText("Indtast venligst de manglende informationer");
             alert.show();
         }
     }
@@ -331,41 +362,41 @@ public class TilmeldningInputWindow extends Stage {
         if (!cboKonf.getSelectionModel().isEmpty()) {
             lvwHotels.getItems().setAll(cboKonf.getValue().getHoteller());
             chkUdflugter = new CheckBox[cboKonf.getValue().getUdflugter().size()];
-        }
-        if (chkLeds.isSelected()) {
-            int i = 0;
-            for (Udflugt u :cboKonf.getValue().getUdflugter()) {
-                chkUdflugter[i] = new CheckBox();
-                chkUdflugter[i].setText(u.getNavn());
-                chkUdflugter[i].setUserData(u);
-                vBoxUdflugter.getChildren().add(chkUdflugter[i]);
-                i++;
+            if (chkLeds.isSelected()) {
+                for (int i = 0; i < cboKonf.getValue().getUdflugter().size(); i++) {
+                    chkUdflugter[i] = new CheckBox();
+                    chkUdflugter[i].setText(cboKonf.getValue().getUdflugter().get(i).getNavn() + " (" + cboKonf.getValue().getUdflugter().get(i).getPris() + " dkk)");
+                    chkUdflugter[i].setUserData(cboKonf.getValue().getUdflugter().get(i));
+                    vBoxUdflugter.getChildren().add(chkUdflugter[i]);
+                }
             }
-        }
-        lblDays.setText("Antal dage:");
-        lblDays.setVisible(true);
-        if (!cboKonf.getSelectionModel().isEmpty()) {
+            lblDays.setText("Antal dage:");
+            lblDays.setVisible(true);
+            lblDays.setManaged(true);
             txfDays.setPromptText("Maks " + cboKonf.getValue().getAntalDage() + " dage");
+            txfDays.setVisible(true);
+            txfDays.setManaged(true);
+            sizeToScene();
         }
-        txfDays.setVisible(true);
     }
 
     private void selectedHotelChanged() {
-        chkServ = new CheckBox[lvwHotels.getSelectionModel().getSelectedItem().getServices().size()];
-        int i = 0;
-        vBoxServ.getChildren().clear();
-        lblServ.setVisible(true);
-        vBoxServ.setVisible(true);
-        for (Service s :lvwHotels.getSelectionModel().getSelectedItem().getServices()) {
-            chkServ[i] = new CheckBox();
-            chkServ[i].setText(s.getNavn());
-            chkServ[i].setUserData(s);
-            vBoxServ.getChildren().add(chkServ[i]);
-            i++;
+        if (!lvwHotels.getSelectionModel().isEmpty()) {
+            chkServ = new CheckBox[lvwHotels.getSelectionModel().getSelectedItem().getServices().size()];
+            vBoxServ.getChildren().clear();
+            lblServ.setVisible(true);
+            vBoxServ.setVisible(true);
+            for (int i = 0; i < lvwHotels.getSelectionModel().getSelectedItem().getServices().size(); i++) {
+                chkServ[i] = new CheckBox();
+                chkServ[i].setText(lvwHotels.getSelectionModel().getSelectedItem().getServices().get(i).getNavn() + " (" + lvwHotels.getSelectionModel().getSelectedItem().getServices().get(i).getPris() + " dkk)");
+                chkServ[i].setUserData(lvwHotels.getSelectionModel().getSelectedItem().getServices().get(i));
+                vBoxServ.getChildren().add(chkServ[i]);
+            }
         }
     }
 
     public void updateKonference() {
+        sizeToScene();
         cboKonf.getItems().setAll(Controller.getKonferencerer());
     }
 }
