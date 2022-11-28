@@ -36,6 +36,8 @@ public class KonferenceWindow extends Stage {
     private final TextField txfPrisPrDag = new TextField();
     private final TextField txfAntalDage = new TextField();
     private Tilmelding actualTilmeldning = null;
+    private DatePicker datePickerStartDato = new DatePicker();
+
 
     private void initContent(GridPane pane) {
         // pane.setGridLinesVisible(true);
@@ -59,8 +61,9 @@ public class KonferenceWindow extends Stage {
         pane.add(lblAntalDage, 0, 3);
         pane.add(txfAntalDage, 1,3,2,1);
 
-        Button btnPickStartDate = new Button("Vælg Startdato");
-        pane.add(btnPickStartDate, 0, 4);
+        Label lblDatePicker = new Label("Vælg Startdato");
+        pane.add(lblDatePicker, 0, 4);
+        pane.add(datePickerStartDato, 0, 5);
 
         HBox buttonBox = new HBox(20);
         pane.add(buttonBox, 0, 5);
