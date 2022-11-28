@@ -80,11 +80,12 @@ public class Controller {
         return Storage.getKonferencer();
     }
 
-    public static void updateKonference(Konference konference, String name, String adresse, int prisPerDag, int antalDage) {
+    public static void updateKonference(Konference konference, String name, String adresse, int prisPerDag, int antalDage, LocalDate startDato) {
        konference.setNavn(name);
        konference.setAdresse(adresse);
        konference.setAntalDage(antalDage);
        konference.setPrisPrDag(prisPerDag);
+       konference.setStartDato(startDato);
 
     }
 
