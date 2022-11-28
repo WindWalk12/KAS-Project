@@ -11,7 +11,7 @@ public class Controller {
     public static void initStorage() {
 
         //konferencer
-        Konference k = Controller.createKonference("Hav og Himmel", "Odense Universitet", LocalDate.of(2022, 5, 18), 2, 1500);
+        Konference k = Controller.createKonference("Hav og Himmel", "Odense Universitet", LocalDate.of(2022, 5, 18), 3, 1500);
 
         //udflugter
         Udflugt u1 = k.createUdflugt(LocalDate.of(2022,5,18), 125, "Byrundtur, Odense", k);
