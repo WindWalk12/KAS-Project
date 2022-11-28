@@ -13,6 +13,7 @@ public class KonferencePane extends GridPane {
     private Button btnCreate, btnUpdate, btnTilm;
     private HBox btnBox;
     private TilmeldningInputWindow tilmeldWindow;
+    private KonferenceWindow konferenceWindow;
 
     public KonferencePane() {
         this.setPadding(new Insets(20));
@@ -21,6 +22,7 @@ public class KonferencePane extends GridPane {
         this.setGridLinesVisible(false);
 
         tilmeldWindow = new TilmeldningInputWindow("Tilmeld en deltager", new Stage());
+        konferenceWindow = new KonferenceWindow("Opret en konference", new Stage());
 
         Label lblKonf = new Label("Konferencer:");
         this.add(lblKonf, 0, 0);
@@ -37,6 +39,7 @@ public class KonferencePane extends GridPane {
 
         btnCreate = new Button("Opret");
         btnBox.getChildren().add(btnCreate);
+        btnCreate.setOnAction(event -> this.createAction());
 
         btnUpdate = new Button("Opdater");
         btnBox.getChildren().add(btnUpdate);
@@ -50,7 +53,7 @@ public class KonferencePane extends GridPane {
     // -------------------------------------------------------------------------
 
     private void createAction() {
-
+        konferenceWindow.showAndWait();
     }
 
     private void updateAction() {
