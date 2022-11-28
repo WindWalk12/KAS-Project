@@ -9,7 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class KonferencePane extends GridPane {
-    private ListView<Konference> lvwCompanies;
+    private ListView<Konference> lvwKonferencer;
     private Button btnCreate, btnUpdate, btnTilm;
     private HBox btnBox;
     private TilmeldningInputWindow tilmeldWindow;
@@ -29,11 +29,11 @@ public class KonferencePane extends GridPane {
         Label lblKonf = new Label("Konferencer:");
         this.add(lblKonf, 0, 0);
 
-        lvwCompanies = new ListView<>();
-        this.add(lvwCompanies, 0, 1, 1, 3);
-        lvwCompanies.setPrefWidth(200);
-        lvwCompanies.setPrefHeight(150);
-        lvwCompanies.getItems().setAll(Controller.getKonferencerer());
+        lvwKonferencer = new ListView<>();
+        this.add(lvwKonferencer, 0, 1, 1, 3);
+        lvwKonferencer.setPrefWidth(200);
+        lvwKonferencer.setPrefHeight(150);
+        lvwKonferencer.getItems().setAll(Controller.getKonferencerer());
 
         btnBox = new HBox();
         this.add(btnBox, 0, 4);
@@ -57,18 +57,19 @@ public class KonferencePane extends GridPane {
 
     private void createAction() {
         konferenceWindow.showAndWait();
+
     }
 
     private void updateAction() {
-        Konference konference = lvwCompanies.getSelectionModel().getSelectedItem();
+        Konference konference = lvwKonferencer.getSelectionModel().getSelectedItem();
         if (konference != null) {
             updateWindow.showAndWait();
 
             // Wait for the modal dialog to close
 
-            int selectIndex = lvwCompanies.getSelectionModel().getSelectedIndex();
-            lvwCompanies.getItems().setAll(Controller.getKonferencerer());
-            lvwCompanies.getSelectionModel().select(selectIndex);
+            int selectIndex = lvwKonferencer.getSelectionModel().getSelectedIndex();
+            lvwKonferencer.getItems().setAll(Controller.getKonferencerer());
+            lvwKonferencer.getSelectionModel().select(selectIndex);
         }
 
     }

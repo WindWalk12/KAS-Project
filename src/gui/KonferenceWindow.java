@@ -66,7 +66,7 @@ public class KonferenceWindow extends Stage {
         pane.add(datePickerStartDato, 0, 5);
 
         HBox buttonBox = new HBox(20);
-        pane.add(buttonBox, 0, 5);
+        pane.add(buttonBox, 0, 6);
         buttonBox.setPadding(new Insets(10, 10, 0, 10));
         buttonBox.setAlignment(Pos.TOP_RIGHT);
 
@@ -84,23 +84,64 @@ public class KonferenceWindow extends Stage {
 
     private void cancelAction() {
         txfName.clear();
+        txfAddress.clear();
+        txfPrisPrDag.clear();
+        txfAntalDage.clear();
         actualTilmeldning = null;
         KonferenceWindow.this.hide();
     }
 
     private void okAction() {
-        String name = txfName.getText().trim();
 
+        String name = txfName.getText().trim();
         if (name.length() > 0) {
             txfName.clear();
             KonferenceWindow.this.hide();
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Create person");
+            alert.setTitle("Create konference");
             alert.setHeaderText("Information missing");
-            alert.setContentText("Type name and title");
+            alert.setContentText("Type name");
             alert.show();
         }
+
+        String address = txfAddress.getText().trim();
+        if (address.length() > 0) {
+            txfAddress.clear();
+            KonferenceWindow.this.hide();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Create konference");
+            alert.setHeaderText("Information missing");
+            alert.setContentText("Type address");
+            alert.show();
+        }
+
+        String pris = txfPrisPrDag.getText().trim();
+        if (pris.length() > 0) {
+            txfPrisPrDag.clear();
+            KonferenceWindow.this.hide();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Create konference");
+            alert.setHeaderText("Information missing");
+            alert.setContentText("Type price per day");
+            alert.show();
+        }
+
+        String antalDage = txfAntalDage.getText().trim();
+        if (antalDage.length() > 0) {
+            txfAntalDage.clear();
+            KonferenceWindow.this.hide();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Create konference");
+            alert.setHeaderText("Information missing");
+            alert.setContentText("Type amount of days");
+            alert.show();
+        }
+
+
     }
 
     // -------------------------------------------------------------------------
