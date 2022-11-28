@@ -24,7 +24,7 @@ public class KonferencePane extends GridPane {
 
         tilmeldWindow = new TilmeldningInputWindow("Tilmeld en deltager", new Stage());
         konferenceWindow = new KonferenceWindow("Opret en konference", new Stage());
-        updateWindow = new UpdateWindow("Updater konference", new Stage());
+
 
         Label lblKonf = new Label("Konferencer:");
         this.add(lblKonf, 0, 0);
@@ -63,6 +63,7 @@ public class KonferencePane extends GridPane {
     private void updateAction() {
         Konference konference = lvwKonferencer.getSelectionModel().getSelectedItem();
         if (konference != null) {
+            updateWindow = new UpdateWindow("Updater konference", new Stage(),konference);
             updateWindow.showAndWait();
 
             // Wait for the modal dialog to close

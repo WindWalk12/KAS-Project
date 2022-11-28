@@ -104,6 +104,10 @@ public class Konference {
         this.antalDage = antalDage;
     }
 
+    public void setPrisPrDag (int prisPrDag){
+        this.prisPrDag = prisPrDag;
+    }
+
     @Override
     public String toString() {
         return navn;

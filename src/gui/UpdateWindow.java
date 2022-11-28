@@ -1,5 +1,7 @@
 package gui;
 
+import application.controller.Controller;
+import application.model.Konference;
 import application.model.Tilmelding;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -16,13 +18,15 @@ import javafx.stage.StageStyle;
 
 public class UpdateWindow extends Stage {
 
-    public UpdateWindow(String title, Stage owner) {
+    public UpdateWindow(String title, Stage owner, Konference konference) {
         this.initOwner(owner);
         this.initStyle(StageStyle.UTILITY);
         this.initModality(Modality.APPLICATION_MODAL);
         this.setMinHeight(100);
         this.setMinWidth(200);
         this.setResizable(false);
+
+        this.konference = konference;
 
         this.setTitle(title);
         GridPane pane = new GridPane();
@@ -38,7 +42,9 @@ public class UpdateWindow extends Stage {
     private final TextField txfAddress = new TextField();
     private final TextField txfPrisPrDag = new TextField();
     private final TextField txfAntalDage = new TextField();
-    private Tilmelding actualTilmeldning = null;
+
+    private Konference konference;
+
 
     private void initContent(GridPane pane) {
         // pane.setGridLinesVisible(true);
@@ -84,29 +90,38 @@ public class UpdateWindow extends Stage {
 
     private void cancelAction() {
         txfName.clear();
-        actualTilmeldning = null;
         UpdateWindow.this.hide();
     }
 
     private void okAction() {
         String name = txfName.getText().trim();
+        String adresse = txfAddress.getText().trim();
+        int prisPerDag = 0;
+        int antalDage = 0;
 
-        if (name.length() > 0) {
+        if(txfPrisPrDag.getText().trim().length() > 0){
+            prisPerDag = Integer.parseInt(txfPrisPrDag.getText().trim());
+        } if (txfAntalDage.getText().trim().length() > 0){
+            antalDage = Integer.parseInt(txfAntalDage.getText().trim());
+        }
+
+        if (name.length() > 0 && adresse.length() > 0 && txfPrisPrDag.getText().trim().length() > 0 && txfAntalDage.getText().trim().length() > 0) {
             txfName.clear();
+            txfAntalDage.clear();
+            txfAddress.clear();
+            txfPrisPrDag.clear();
+            Controller.updateKonference(konference,name,adresse,prisPerDag,antalDage);
+
             UpdateWindow.this.hide();
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Opdater konference");
             alert.setHeaderText("Information missing");
-            alert.setContentText("Type name and title");
+            alert.setContentText("Indtast alle de nødvendige informationer ");
             alert.show();
         }
     }
 
-    // -------------------------------------------------------------------------
-
-    public Tilmelding getActualTilmeldning() {
-        return actualTilmeldning;
-    }
+    // ----------------------------------------------------------------------
 }
 

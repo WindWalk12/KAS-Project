@@ -80,6 +80,14 @@ public class Controller {
         return Storage.getKonferencer();
     }
 
+    public static void updateKonference(Konference konference, String name, String adresse, int prisPerDag, int antalDage) {
+       konference.setNavn(name);
+       konference.setAdresse(adresse);
+       konference.setAntalDage(antalDage);
+       konference.setPrisPrDag(prisPerDag);
+
+    }
+
     // -------------------------------------------------------------------------
 
     public static Tilmelding createTilmeldning(Deltager deltager, Konference konference, Hotel hotel, Ledsager ledsager, ArrayList<Service> services, int antalDage) {
