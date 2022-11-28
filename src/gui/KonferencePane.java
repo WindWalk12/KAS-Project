@@ -57,6 +57,7 @@ public class KonferencePane extends GridPane {
 
     private void createAction() {
         konferenceWindow.showAndWait();
+        lvwKonferencer.getItems().setAll(Controller.getKonferencerer());
 
 
     }

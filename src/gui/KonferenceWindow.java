@@ -92,7 +92,7 @@ public class KonferenceWindow extends Stage {
         txfAddress.clear();
         txfPrisPrDag.clear();
         txfAntalDage.clear();
-        actualTilmeldning = null;
+        actualKonference = null;
         KonferenceWindow.this.hide();
     }
 
@@ -100,6 +100,10 @@ public class KonferenceWindow extends Stage {
 
 
         String name = txfName.getText().trim();
+        String address = txfAddress.getText().trim();
+        String pris = txfPrisPrDag.getText().trim();
+        String antalDage = txfAntalDage.getText().trim();
+
         if (name.length() > 0) {
             txfName.clear();
             KonferenceWindow.this.hide();
@@ -107,11 +111,11 @@ public class KonferenceWindow extends Stage {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Create konference");
             alert.setHeaderText("Information missing");
-            alert.setContentText("Type name");
+            alert.setContentText("Type information");
             alert.show();
         }
 
-        String address = txfAddress.getText().trim();
+
         if (address.length() > 0) {
             txfAddress.clear();
             KonferenceWindow.this.hide();
@@ -123,7 +127,7 @@ public class KonferenceWindow extends Stage {
             alert.show();
         }
 
-        String pris = txfPrisPrDag.getText().trim();
+
 
         if (pris.length() > 0) {
             txfPrisPrDag.clear();
@@ -136,7 +140,6 @@ public class KonferenceWindow extends Stage {
             alert.show();
         }
 
-        String antalDage = txfAntalDage.getText().trim();
         if (antalDage.length() > 0) {
             txfAntalDage.clear();
             KonferenceWindow.this.hide();
@@ -150,10 +153,9 @@ public class KonferenceWindow extends Stage {
 
         LocalDate startDato;
         startDato = datePickerStartDato.getValue();
-        Double prisPrDag = null;
+        Double prisPrDag = 0.0;
         int antalDage2 = 0;
         Konference konference = Controller.createKonference(name, address, startDato, antalDage2, prisPrDag);
-        this.actualKonference = konference;
 
     }
 
