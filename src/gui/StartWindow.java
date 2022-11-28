@@ -46,12 +46,19 @@ public class StartWindow extends Application {
         tabOversigt.setContent(oversigtPane);
         tabOversigt.setOnSelectionChanged(event -> oversigtPane.updateList());
 
-        Tab tabKonference = new Tab("Konference");
+        Tab tabKonference = new Tab("Konference/Udflugter");
         tabPane.getTabs().add(tabKonference);
 
         KonferencePane konferencePane = new KonferencePane();
         tabKonference.setContent(konferencePane);
         tabKonference.setOnSelectionChanged(event -> konferencePane.updateList());
+
+        Tab tabHotel = new Tab("Hotel/Services");
+        tabPane.getTabs().add(tabHotel);
+
+        HotelPane hotelPane = new HotelPane();
+        tabHotel.setContent(hotelPane);
+        tabHotel.setOnSelectionChanged(event -> hotelPane.updateList());
 
     }
 

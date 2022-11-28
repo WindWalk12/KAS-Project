@@ -77,7 +77,7 @@ public class OversigtPane extends GridPane {
         lvwKonferencer.getItems().setAll(Controller.getKonferencerer());
     }
 
-    public void updateView() {
+    private void updateView() {
         Konference konference = lvwKonferencer.getSelectionModel().getSelectedItem();
         if (konference != null) {
             txfaddr.setText(konference.getAdresse());

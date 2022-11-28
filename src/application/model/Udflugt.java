@@ -52,4 +52,10 @@ public class Udflugt {
     }
 
     //--------------------------------------------------------------------------------------------------------
+
+
+    @Override
+    public String toString() {
+        return navn + " (" + pris + " dkk)";
+    }
 }

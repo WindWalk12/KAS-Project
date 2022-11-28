@@ -2,6 +2,8 @@ package gui;
 
 import application.controller.Controller;
 import application.model.Konference;
+import application.model.Udflugt;
+import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
@@ -10,8 +12,9 @@ import javafx.stage.Stage;
 
 public class KonferencePane extends GridPane {
     private ListView<Konference> lvwKonferencer;
+    private ListView<Udflugt> lvwUdflugter;
     private Button btnCreate, btnUpdate, btnTilm;
-    private HBox btnBox;
+    private HBox btnKonfBox, btnUdflugtBox;
     private TilmeldningInputWindow tilmeldWindow;
     private KonferenceWindow konferenceWindow;
     private KonferenceUpdateWindow konferenceUpdateWindow;
@@ -34,22 +37,44 @@ public class KonferencePane extends GridPane {
         lvwKonferencer.setPrefWidth(200);
         lvwKonferencer.setPrefHeight(150);
         lvwKonferencer.getItems().setAll(Controller.getKonferencerer());
+        ChangeListener<Konference> listener = (ov, oldKonference, newKonference) -> this.selectedKonferenceChanged();
+        lvwKonferencer.getSelectionModel().selectedItemProperty().addListener(listener);
 
-        btnBox = new HBox();
-        this.add(btnBox, 0, 4);
-        btnBox.setSpacing(20);
+        btnKonfBox = new HBox();
+        this.add(btnKonfBox, 0, 4);
+        btnKonfBox.setSpacing(20);
 
         btnCreate = new Button("Opret");
-        btnBox.getChildren().add(btnCreate);
-        btnCreate.setOnAction(event -> this.createAction());
+        btnKonfBox.getChildren().add(btnCreate);
+        btnCreate.setOnAction(event -> this.createKonfAction());
 
         btnUpdate = new Button("Opdater");
-        btnBox.getChildren().add(btnUpdate);
-        btnUpdate.setOnAction(event -> this.updateAction());
+        btnKonfBox.getChildren().add(btnUpdate);
+        btnUpdate.setOnAction(event -> this.updateKonfAction());
 
         btnTilm = new Button("Tilmeld");
-        btnBox.getChildren().add(btnTilm);
+        btnKonfBox.getChildren().add(btnTilm);
         btnTilm.setOnAction(event -> this.tilmeldAction());
+
+        Label lblhote = new Label("Udflugter:");
+        this.add(lblhote, 1, 0);
+
+        lvwUdflugter = new ListView<>();
+        this.add(lvwUdflugter, 1, 1, 1, 3);
+        lvwUdflugter.setPrefWidth(200);
+        lvwUdflugter.setPrefHeight(150);
+
+        btnUdflugtBox = new HBox();
+        this.add(btnUdflugtBox, 1, 4);
+        btnUdflugtBox.setSpacing(20);
+
+        btnCreate = new Button("Opret");
+        btnUdflugtBox.getChildren().add(btnCreate);
+        btnCreate.setOnAction(event -> this.createUdflugtAction());
+
+        btnUpdate = new Button("Opdater");
+        btnUdflugtBox.getChildren().add(btnUpdate);
+        btnUpdate.setOnAction(event -> this.updateUdflugtAction());
 
     }
 
@@ -59,12 +84,12 @@ public class KonferencePane extends GridPane {
         lvwKonferencer.getItems().setAll(Controller.getKonferencerer());
     }
 
-    private void createAction() {
+    private void createKonfAction() {
         konferenceWindow.showAndWait();
         lvwKonferencer.getItems().setAll(Controller.getKonferencerer());
     }
 
-    private void updateAction() {
+    private void updateKonfAction() {
         Konference konference = lvwKonferencer.getSelectionModel().getSelectedItem();
         if (konference != null) {
             konferenceUpdateWindow = new KonferenceUpdateWindow("Updater konference", new Stage(),konference);
@@ -84,5 +109,21 @@ public class KonferencePane extends GridPane {
         tilmeldWindow.showAndWait();
     }
 
+    private void selectedKonferenceChanged() {
+        Konference konference = lvwKonferencer.getSelectionModel().getSelectedItem();
+        if (konference != null) {
+            lvwUdflugter.getItems().setAll(konference.getUdflugter());
+        } else {
+            lvwUdflugter.getItems().clear();
+        }
+    }
+
+    private void createUdflugtAction() {
+
+    }
+
+    private void updateUdflugtAction() {
+
+    }
 }
 
