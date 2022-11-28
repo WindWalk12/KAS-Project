@@ -48,4 +48,12 @@ public class KonferencePane extends GridPane {
 
     }
 
+    private void updateAction() {
+
+    }
+
+    private void  tilmeldAction() {
+
+    }
+
 }
