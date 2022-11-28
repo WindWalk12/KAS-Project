@@ -14,7 +14,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import storage.Storage;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
@@ -81,9 +80,9 @@ public class TilmeldningInputWindow extends Stage {
         Label lblkonf = new Label("Vælg en konference");
         pane.add(lblkonf, 0, 3);
 
-        cboKonf.getItems().addAll(Controller.getKonferencerer());
+        cboKonf.getItems().setAll(Controller.getKonferencerer());
         pane.add(cboKonf, 1, 3);
-        ChangeListener<Konference> listener = (ov, oldKonference, newKonference) -> this.selectedKonferenceChanged(pane);
+        ChangeListener<Konference> listener = (ov, oldKonference, newKonference) -> this.selectedKonferenceChanged();
         cboKonf.valueProperty().addListener(listener);
 
         pane.add(lblDays, 0, 4);
@@ -328,9 +327,11 @@ public class TilmeldningInputWindow extends Stage {
 
     // -------------------------------------------------------------------------
 
-    private void selectedKonferenceChanged(GridPane pane) {
-        lvwHotels.getItems().setAll(cboKonf.getValue().getHoteller());
-        chkUdflugter = new CheckBox[cboKonf.getValue().getUdflugter().size()];
+    private void selectedKonferenceChanged() {
+        if (!cboKonf.getSelectionModel().isEmpty()) {
+            lvwHotels.getItems().setAll(cboKonf.getValue().getHoteller());
+            chkUdflugter = new CheckBox[cboKonf.getValue().getUdflugter().size()];
+        }
         if (chkLeds.isSelected()) {
             int i = 0;
             for (Udflugt u :cboKonf.getValue().getUdflugter()) {
@@ -343,7 +344,9 @@ public class TilmeldningInputWindow extends Stage {
         }
         lblDays.setText("Antal dage:");
         lblDays.setVisible(true);
-        txfDays.setPromptText("Maks " + cboKonf.getValue().getAntalDage() + " dage");
+        if (!cboKonf.getSelectionModel().isEmpty()) {
+            txfDays.setPromptText("Maks " + cboKonf.getValue().getAntalDage() + " dage");
+        }
         txfDays.setVisible(true);
     }
 
@@ -360,5 +363,9 @@ public class TilmeldningInputWindow extends Stage {
             vBoxServ.getChildren().add(chkServ[i]);
             i++;
         }
+    }
+
+    public void updateKonference() {
+        cboKonf.getItems().setAll(Controller.getKonferencerer());
     }
 }

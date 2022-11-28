@@ -81,6 +81,7 @@ public class KonferencePane extends GridPane {
     }
 
     private void tilmeldAction() {
+        tilmeldWindow.updateKonference();
         tilmeldWindow.showAndWait();
     }
 
