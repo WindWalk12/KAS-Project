@@ -6,17 +6,21 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 public class KonferencePane extends GridPane {
     private ListView<Konference> lvwCompanies;
     private Button btnCreate, btnUpdate, btnTilm;
     private HBox btnBox;
+    private TilmeldningInputWindow tilmeldWindow;
 
     public KonferencePane() {
         this.setPadding(new Insets(20));
         this.setHgap(20);
         this.setVgap(10);
         this.setGridLinesVisible(false);
+
+        tilmeldWindow = new TilmeldningInputWindow("Tilmeld en deltager", new Stage());
 
         Label lblKonf = new Label("Konferencer:");
         this.add(lblKonf, 0, 0);
@@ -39,6 +43,7 @@ public class KonferencePane extends GridPane {
 
         btnTilm = new Button("Tilmeld");
         btnBox.getChildren().add(btnTilm);
+        btnTilm.setOnAction(event -> this.tilmeldAction());
 
     }
 
@@ -53,7 +58,7 @@ public class KonferencePane extends GridPane {
     }
 
     private void  tilmeldAction() {
-
+        tilmeldWindow.showAndWait();
     }
 
 }
