@@ -46,5 +46,10 @@ public class Udflugt {
     public double getPris() {
         return pris;
     }
+
+    public String getNavn() {
+        return navn;
+    }
+
     //--------------------------------------------------------------------------------------------------------
 }

@@ -86,6 +86,11 @@ public class Hotel {
     public Double getPrisDobbeltVaerelse() {
         return prisDobbeltVaerelse;
     }
+
+    @Override
+    public String toString() {
+        return navn;
+    }
 }
 
 

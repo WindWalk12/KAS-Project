@@ -57,6 +57,10 @@ public class Controller {
         k.addTilmelding(t3);
         k.addTilmelding(t4);
 
+        k.addHotel(h1);
+        k.addHotel(h2);
+        k.addHotel(h3);
+
         t1.udregnSamletPris();
         t2.udregnSamletPris();
         t3.udregnSamletPris();

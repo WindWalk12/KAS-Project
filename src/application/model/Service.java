@@ -14,5 +14,6 @@ public class Service {
     public Double getPris() {
         return pris;
     }
+    public String getNavn() { return navn; }
 
 }
