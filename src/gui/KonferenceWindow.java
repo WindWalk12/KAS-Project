@@ -32,6 +32,7 @@ public class KonferenceWindow extends Stage {
     // -------------------------------------------------------------------------
 
     private final TextField txfName = new TextField();
+    private final TextField txfAddress = new TextField();
     private Tilmelding actualTilmeldning = null;
 
     private void initContent(GridPane pane) {
@@ -42,8 +43,12 @@ public class KonferenceWindow extends Stage {
 
         Label lblName = new Label("Name:");
         pane.add(lblName, 0, 0);
-
         pane.add(txfName, 1, 0, 2, 1);
+
+        Label lblAddress = new Label("Adresse:");
+        pane.add(lblAddress, 0, 1);
+        pane.add(txfAddress, 1,1,2,1);
+
 
         HBox buttonBox = new HBox(20);
         pane.add(buttonBox, 0, 3);
