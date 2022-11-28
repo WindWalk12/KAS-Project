@@ -59,8 +59,11 @@ public class KonferenceWindow extends Stage {
         pane.add(lblAntalDage, 0, 3);
         pane.add(txfAntalDage, 1,3,2,1);
 
+        Button btnPickStartDate = new Button("Vælg Startdato");
+        pane.add(btnPickStartDate, 0, 4);
+
         HBox buttonBox = new HBox(20);
-        pane.add(buttonBox, 0, 4);
+        pane.add(buttonBox, 0, 5);
         buttonBox.setPadding(new Insets(10, 10, 0, 10));
         buttonBox.setAlignment(Pos.TOP_RIGHT);
 
