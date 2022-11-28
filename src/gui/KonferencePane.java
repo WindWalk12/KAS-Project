@@ -58,6 +58,7 @@ public class KonferencePane extends GridPane {
     private void createAction() {
         konferenceWindow.showAndWait();
 
+
     }
 
     private void updateAction() {

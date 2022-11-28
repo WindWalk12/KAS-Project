@@ -1,5 +1,7 @@
 package gui;
 
+import application.controller.Controller;
+import application.model.Konference;
 import application.model.Tilmelding;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -10,6 +12,8 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import java.time.LocalDate;
 
 public class KonferenceWindow extends Stage {
 
@@ -31,11 +35,12 @@ public class KonferenceWindow extends Stage {
 
     // -------------------------------------------------------------------------
 
+    private Konference konference;
     private final TextField txfName = new TextField();
     private final TextField txfAddress = new TextField();
     private final TextField txfPrisPrDag = new TextField();
     private final TextField txfAntalDage = new TextField();
-    private Tilmelding actualTilmeldning = null;
+    private Konference actualKonference = null;
     private DatePicker datePickerStartDato = new DatePicker();
 
 
@@ -93,6 +98,7 @@ public class KonferenceWindow extends Stage {
 
     private void okAction() {
 
+
         String name = txfName.getText().trim();
         if (name.length() > 0) {
             txfName.clear();
@@ -118,6 +124,7 @@ public class KonferenceWindow extends Stage {
         }
 
         String pris = txfPrisPrDag.getText().trim();
+
         if (pris.length() > 0) {
             txfPrisPrDag.clear();
             KonferenceWindow.this.hide();
@@ -141,12 +148,19 @@ public class KonferenceWindow extends Stage {
             alert.show();
         }
 
+        LocalDate startDato;
+        startDato = datePickerStartDato.getValue();
+        Double prisPrDag = null;
+        int antalDage2 = 0;
+        Konference konference = Controller.createKonference(name, address, startDato, antalDage2, prisPrDag);
+        this.actualKonference = konference;
 
     }
 
     // -------------------------------------------------------------------------
 
-    public Tilmelding getActualTilmeldning() {
-        return actualTilmeldning;
+    public Konference getActualKonference() {
+        return actualKonference;
     }
 }
+
