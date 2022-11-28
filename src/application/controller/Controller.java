@@ -19,17 +19,17 @@ public class Controller {
         Udflugt u3 = k.createUdflugt(LocalDate.of(2022,5,20),200, "Trapholt Museum, Kolding");
 
         //hoteller
-        Hotel h1 = Controller.createHotel(1050, 1250, "Den Hvide Svane");
+        Hotel h1 = Controller.createHotel(1050, 1250, "Den Hvide Svane", k);
 
         Service s1 = h1.createService("WIFI",50);
         ArrayList<Service> services1 = new ArrayList<>();
         services1.add(s1);
 
-        Hotel h2 = Controller.createHotel(700, 800, "Høtel Phønix");
+        Hotel h2 = Controller.createHotel(700, 800, "Høtel Phønix", k);
         Controller.createService("Bad", 200, h2);
         Controller.createService("WIFI", 75, h2);
 
-        Hotel h3 = Controller.createHotel(500, 600, "Pension Tusindfryd");
+        Hotel h3 = Controller.createHotel(500, 600, "Pension Tusindfryd", k);
         Controller.createService("Morgenmad", 100, h3);
 
         //deltagere
@@ -51,15 +51,6 @@ public class Controller {
         Tilmelding t2 = Controller.createTilmeldning(d2, k, h1, null, null, 3);
         Tilmelding t3 = Controller.createTilmeldning(d3, k, h1, l1, services1, 3);
         Tilmelding t4 = Controller.createTilmeldning(d4, k, h1, l2, services1, 3);
-
-        k.addTilmelding(t1);
-        k.addTilmelding(t2);
-        k.addTilmelding(t3);
-        k.addTilmelding(t4);
-
-        k.addHotel(h1);
-        k.addHotel(h2);
-        k.addHotel(h3);
 
         t1.udregnSamletPris();
         t2.udregnSamletPris();
@@ -159,8 +150,9 @@ public class Controller {
 
     // -------------------------------------------------------------------------
 
-    public static Hotel createHotel(double pris, double prisDobbeltVaerelse, String navn) {
+    public static Hotel createHotel(double pris, double prisDobbeltVaerelse, String navn, Konference konference) {
         Hotel hotel = new Hotel(pris, prisDobbeltVaerelse, navn);
+        konference.addHotel(hotel);
         Storage.addHotel(hotel);
         return hotel;
     }
