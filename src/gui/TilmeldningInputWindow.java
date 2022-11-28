@@ -25,7 +25,6 @@ public class TilmeldningInputWindow extends Stage {
         this.initModality(Modality.APPLICATION_MODAL);
         this.setMinHeight(100);
         this.setMinWidth(200);
-        //this.setHeight(580);
         this.setResizable(false);
 
         this.setTitle(title);
@@ -54,7 +53,6 @@ public class TilmeldningInputWindow extends Stage {
     private ComboBox<Konference> cboKonf = new ComboBox<>();
 
     private void initContent(GridPane pane) {
-        // pane.setGridLinesVisible(true);
         pane.setPadding(new Insets(20));
         pane.setHgap(10);
         pane.setVgap(10);
