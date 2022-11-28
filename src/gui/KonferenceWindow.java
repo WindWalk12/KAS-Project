@@ -32,10 +32,6 @@ public class KonferenceWindow extends Stage {
     // -------------------------------------------------------------------------
 
     private final TextField txfName = new TextField();
-    private final TextField txfTitle = new TextField();
-    private final CheckBox chkSenior = new CheckBox();
-
-
     private Tilmelding actualTilmeldning = null;
 
     private void initContent(GridPane pane) {
@@ -47,15 +43,7 @@ public class KonferenceWindow extends Stage {
         Label lblName = new Label("Name:");
         pane.add(lblName, 0, 0);
 
-        Label lblTitle = new Label("Title:");
-        pane.add(lblTitle, 0,1);
-
         pane.add(txfName, 1, 0, 2, 1);
-        pane.add(txfTitle, 1,1,2,1);
-
-        pane.add(chkSenior, 1,2);
-        Label lblSenior = new Label("Senior");
-        pane.add(lblSenior, 2,2);
 
         HBox buttonBox = new HBox(20);
         pane.add(buttonBox, 0, 3);
@@ -75,8 +63,6 @@ public class KonferenceWindow extends Stage {
     // Button actions
 
     private void cancelAction() {
-        txfTitle.clear();
-        txfTitle.requestFocus();
         txfName.clear();
         actualTilmeldning = null;
         KonferenceWindow.this.hide();
@@ -84,12 +70,9 @@ public class KonferenceWindow extends Stage {
 
     private void okAction() {
         String name = txfName.getText().trim();
-        String title = txfTitle.getText().trim();
 
-        if (name.length() > 0 && title.length() > 0) {
-            txfTitle.clear();
+        if (name.length() > 0) {
             txfName.clear();
-            txfTitle.requestFocus();
             KonferenceWindow.this.hide();
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
