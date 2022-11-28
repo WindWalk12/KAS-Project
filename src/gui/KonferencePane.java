@@ -14,6 +14,7 @@ public class KonferencePane extends GridPane {
     private HBox btnBox;
     private TilmeldningInputWindow tilmeldWindow;
     private KonferenceWindow konferenceWindow;
+    private UpdateWindow updateWindow;
 
     public KonferencePane() {
         this.setPadding(new Insets(20));
@@ -23,7 +24,7 @@ public class KonferencePane extends GridPane {
 
         tilmeldWindow = new TilmeldningInputWindow("Tilmeld en deltager", new Stage());
         konferenceWindow = new KonferenceWindow("Opret en konference", new Stage());
-        konferenceWindow = new KonferenceWindow("Updater konference", new Stage());
+        updateWindow = new UpdateWindow("Updater konference", new Stage());
 
         Label lblKonf = new Label("Konferencer:");
         this.add(lblKonf, 0, 0);
@@ -61,7 +62,7 @@ public class KonferencePane extends GridPane {
     private void updateAction() {
         Konference konference = lvwCompanies.getSelectionModel().getSelectedItem();
         if (konference != null) {
-            konferenceWindow.showAndWait();
+            updateWindow.showAndWait();
 
             // Wait for the modal dialog to close
 
@@ -71,9 +72,10 @@ public class KonferencePane extends GridPane {
         }
 
     }
-        private void tilmeldAction () {
-            tilmeldWindow.showAndWait();
-        }
 
+    private void tilmeldAction() {
+        tilmeldWindow.showAndWait();
     }
+
+}
 
