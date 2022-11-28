@@ -92,7 +92,6 @@ public class KonferenceWindow extends Stage {
         txfAddress.clear();
         txfPrisPrDag.clear();
         txfAntalDage.clear();
-        actualTilmeldning = null;
         KonferenceWindow.this.hide();
     }
 
