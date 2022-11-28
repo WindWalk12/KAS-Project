@@ -67,6 +67,10 @@ public class OversigtPane extends GridPane {
         this.updateView();
     }
 
+    public void updateList() {
+        lvwKonferencer.getItems().setAll(Controller.getKonferencerer());
+    }
+
     public void updateView() {
         Konference konference = lvwKonferencer.getSelectionModel().getSelectedItem();
         if (konference != null) {
@@ -85,5 +89,4 @@ public class OversigtPane extends GridPane {
             txfADage.clear();
         }
     }
-
 }

@@ -2,6 +2,7 @@ package gui;
 
 import application.controller.Controller;
 import application.model.Konference;
+import application.model.Tilmelding;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
@@ -55,11 +56,13 @@ public class KonferencePane extends GridPane {
 
     // -------------------------------------------------------------------------
 
+    public void updateList() {
+        lvwKonferencer.getItems().setAll(Controller.getKonferencerer());
+    }
+
     private void createAction() {
         konferenceWindow.showAndWait();
         lvwKonferencer.getItems().setAll(Controller.getKonferencerer());
-
-
     }
 
     private void updateAction() {
