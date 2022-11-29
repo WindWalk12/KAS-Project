@@ -155,6 +155,7 @@ public class KonferenceWindow extends Stage {
         startDato = datePickerStartDato.getValue();
         Double prisPrDag = 0.0;
         int antalDage2 = 0;
+        //ved ikke hvordan man kan lave string om til double/int^
         Konference konference = Controller.createKonference(name, address, startDato, antalDage2, prisPrDag);
 
     }
