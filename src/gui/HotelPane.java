@@ -2,11 +2,9 @@ package gui;
 
 import application.controller.Controller;
 import application.model.Hotel;
-import application.model.Konference;
 import application.model.Service;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;

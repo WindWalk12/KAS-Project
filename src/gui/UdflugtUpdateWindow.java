@@ -1,7 +1,6 @@
 package gui;
 
 import application.controller.Controller;
-import application.model.Konference;
 import application.model.Udflugt;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

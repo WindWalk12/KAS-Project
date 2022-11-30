@@ -2,7 +2,6 @@ package gui;
 
 import application.controller.Controller;
 import application.model.Hotel;
-import application.model.Konference;
 import application.model.Service;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

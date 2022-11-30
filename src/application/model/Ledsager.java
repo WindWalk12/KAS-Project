@@ -1,7 +1,5 @@
 package application.model;
 
-import storage.Storage;
-
 import java.util.ArrayList;
 
 public class Ledsager extends Person {

@@ -2,7 +2,6 @@ package gui;
 
 import application.controller.Controller;
 import application.model.Konference;
-import application.model.Tilmelding;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
