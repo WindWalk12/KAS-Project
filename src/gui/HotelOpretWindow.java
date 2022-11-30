@@ -37,6 +37,7 @@ public class HotelOpretWindow extends Stage {
     private final TextField txfName = new TextField();
     private final TextField txfPris = new TextField();
     private final TextField txfPrisDobbeltVærelse = new TextField();
+
     private Hotel actualHotel = null;
 
     private ComboBox<Konference> cboKonf = new ComboBox<>();
@@ -73,6 +74,9 @@ public class HotelOpretWindow extends Stage {
         Button btnOK = new Button("OK");
         buttonBox.getChildren().add(btnOK);
         btnOK.setOnAction(event -> this.okAction());
+
+        Label lblKonf = new Label("Konferencer:");
+        pane.add(lblKonf, 0, 3);
 
         cboKonf.getItems().setAll(Controller.getKonferencerer());
         pane.add(cboKonf, 1, 3);

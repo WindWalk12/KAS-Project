@@ -8,6 +8,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -17,6 +18,9 @@ public class HotelPane extends GridPane {
     private ListView<Service> lvwServices;
     private Button btnCreate, btnUpdate;
     private HBox btnHoteBox, btnServBox;
+
+    private final TextField txfPris = new TextField();
+    private final TextField txfDobbelt = new TextField();
 
     private HotelOpretWindow hotelWindow;
 
@@ -30,6 +34,16 @@ public class HotelPane extends GridPane {
 
         Label lblKonf = new Label("Hoteller:");
         this.add(lblKonf, 0, 0);
+
+        Label lblPris = new Label("Pris:");
+        this.add(txfPris, 0, 7, 1, 1);
+        this.add(lblPris, 0, 6);
+
+        Label lblPrisDobbelt = new Label("Pris Dobbeltværelse:");
+        this.add(lblPrisDobbelt, 0, 8);
+        this.add(txfDobbelt, 0, 9, 1, 1);
+
+
 
         lvwHoteller = new ListView<>();
         this.add(lvwHoteller, 0, 1, 1, 3);
@@ -90,6 +104,8 @@ public class HotelPane extends GridPane {
     private void selectedHotelChanged() {
         Hotel hotel = lvwHoteller.getSelectionModel().getSelectedItem();
         if (hotel != null) {
+            txfPris.setText(String.format("%.1f dkk", hotel.getPris()));
+            txfDobbelt.setText(String.format("%.1f dkk", hotel.getPrisDobbeltVaerelse()));
             lvwServices.getItems().setAll(hotel.getServices());
         } else {
             lvwServices.getItems().clear();
