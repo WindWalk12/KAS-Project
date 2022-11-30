@@ -1,5 +1,6 @@
 package gui;
 
+import application.controller.Controller;
 import application.model.Konference;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -86,15 +87,19 @@ public class UdflugtWindow extends Stage {
 
     private void okAction() {
         String name = txfName.getText().trim();
-        Double pris = Double.parseDouble(txfPris.getText().trim());
+        double pris = 0;
         LocalDate startDato;
         startDato = datePickerStartDato.getValue();
+
+        if (txfPris.getText().trim().length() > 0) {
+            pris = Double.parseDouble(txfPris.getText().trim());
+        }
 
 
         if (name.length() > 0 && pris >= 0 && startDato != null) {
             txfName.clear();
             txfPris.clear();
-            konference.createUdflugt(startDato, pris, name);
+            Controller.createUdflugt(startDato, pris, name, konference);
             UdflugtWindow.this.hide();
 
         } else {

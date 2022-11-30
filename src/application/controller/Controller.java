@@ -135,7 +135,7 @@ public class Controller {
 
     // -------------------------------------------------------------------------
 
-    public Udflugt createUdflugt(LocalDate dato, double pris, String navn, Konference konference) {
+    public static Udflugt createUdflugt(LocalDate dato, double pris, String navn, Konference konference) {
         Udflugt udflugt = konference.createUdflugt(dato, pris, navn);
         return udflugt;
     }
