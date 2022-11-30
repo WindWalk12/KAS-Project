@@ -21,11 +21,15 @@ public class HotelPane extends GridPane {
     private HBox btnHoteBox, btnServBox;
     private ServiceWindow serviceWindow;
 
+    private HotelOpretWindow hotelWindow;
+
     public HotelPane() {
         this.setPadding(new Insets(20));
         this.setHgap(20);
         this.setVgap(10);
         this.setGridLinesVisible(false);
+
+        hotelWindow = new HotelOpretWindow("Opret hotel",new Stage());
 
         Label lblKonf = new Label("Hoteller:");
         this.add(lblKonf, 0, 0);
@@ -44,11 +48,11 @@ public class HotelPane extends GridPane {
 
         btnCreate = new Button("Opret");
         btnHoteBox.getChildren().add(btnCreate);
-        btnCreate.setOnAction(event -> this.createHoteAction());
+        btnCreate.setOnAction(event -> this.createHotelAction());
 
         btnUpdate = new Button("Opdater");
         btnHoteBox.getChildren().add(btnUpdate);
-        btnUpdate.setOnAction(event -> this.updateHoteAction());
+        btnUpdate.setOnAction(event -> this.updateHotelAction());
 
         Label lblhote = new Label("Services:");
         this.add(lblhote, 1, 0);
@@ -78,10 +82,12 @@ public class HotelPane extends GridPane {
         lvwHoteller.getItems().setAll(Controller.getHoteller());
     }
 
-    private void createHoteAction() {
+    private void createHotelAction() {
+       hotelWindow.showAndWait();
+       lvwHoteller.getItems().setAll(Controller.getHoteller());
     }
 
-    private void updateHoteAction() {
+    private void updateHotelAction() {
     }
 
     private void selectedHotelChanged() {

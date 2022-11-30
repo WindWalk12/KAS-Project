@@ -12,7 +12,7 @@ import javafx.scene.layout.GridPane;
 public class OversigtPane extends GridPane {
     private ListView<Konference> lvwKonferencer;
     private TextArea txaTilm;
-    private TextField txfaddr, txfSDato, txfADage, txfTjen;
+    private TextField txfaddr, txfSDato, txfADage, txfPris, txfTjen;
 
     public OversigtPane() {
         this.setPadding(new Insets(20));
@@ -24,7 +24,7 @@ public class OversigtPane extends GridPane {
         this.add(lblKonf, 0, 0);
 
         lvwKonferencer = new ListView<>();
-        this.add(lvwKonferencer, 0, 1, 1, 6);
+        this.add(lvwKonferencer, 0, 1, 1, 7);
         lvwKonferencer.setPrefWidth(200);
         lvwKonferencer.setPrefHeight(300);
         lvwKonferencer.getItems().setAll(Controller.getKonferencerer());
@@ -49,17 +49,23 @@ public class OversigtPane extends GridPane {
         this.add(txfADage, 3, 3);
         txfADage.setEditable(false);
 
+        Label lblPris = new Label("Pris pr. Dag:");
+        this.add(lblPris, 2, 4);
+        txfPris = new TextField();
+        this.add(txfPris, 3, 4);
+        txfPris.setEditable(false);
+
         Label lblTjen = new Label("Fortjenste:");
-        this.add(lblTjen, 2, 4);
+        this.add(lblTjen, 2, 5);
         txfTjen = new TextField();
-        this.add(txfTjen, 3, 4);
+        this.add(txfTjen, 3, 5);
         txfTjen.setEditable(false);
 
         Label lblDelt = new Label("Tilmeldte:");
-        this.add(lblDelt, 2, 5);
+        this.add(lblDelt, 2, 6);
 
         txaTilm = new TextArea();
-        this.add(txaTilm, 2, 6, 2, 1);
+        this.add(txaTilm, 2, 7, 2, 1);
         txaTilm.setPrefWidth(200);
         txaTilm.setPrefHeight(100);
         txaTilm.setEditable(false);
@@ -83,6 +89,7 @@ public class OversigtPane extends GridPane {
             txfaddr.setText(konference.getAdresse());
             txfSDato.setText(konference.getStartDato().toString());
             txfADage.setText(String.valueOf(konference.getAntalDage()));
+            txfPris.setText(konference.getPrisPrDag() + " dkk");
             txfTjen.setText(konference.getFortjeneste() + " dkk");
             StringBuilder sb = new StringBuilder();
             for (Tilmelding t : konference.getTilmeldinger()) {
@@ -98,6 +105,7 @@ public class OversigtPane extends GridPane {
             txfaddr.clear();
             txfSDato.clear();
             txfADage.clear();
+            txfPris.clear();
             txfTjen.clear();
         }
     }
