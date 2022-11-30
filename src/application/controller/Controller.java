@@ -140,9 +140,10 @@ public class Controller {
         return udflugt;
     }
 
-    public static void updateService(Service service, String name, Double pris) {
-        service.setNavn(name);
-        service.setPris(pris);
+    public static void updateUdflugt(Udflugt udflugt, String name, Double pris, LocalDate date) {
+        udflugt.setNavn(name);
+        udflugt.setPris(pris);
+        udflugt.setDato(date);
     }
 
     public static void deleteUdflugt(Udflugt udflugt) {
@@ -177,7 +178,10 @@ public class Controller {
         return service;
     }
 
-
+    public static void updateService(Service service, String name, Double pris) {
+        service.setNavn(name);
+        service.setPris(pris);
+    }
 
     public static void deleteService(Service service) {
         Storage.removeService(service);

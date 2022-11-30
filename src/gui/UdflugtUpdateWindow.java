@@ -1,6 +1,8 @@
 package gui;
 
+import application.controller.Controller;
 import application.model.Konference;
+import application.model.Udflugt;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -13,9 +15,9 @@ import javafx.stage.StageStyle;
 
 import java.time.LocalDate;
 
-public class UdflugtWindow extends Stage {
+public class UdflugtUpdateWindow extends Stage {
 
-    public UdflugtWindow(String title, Stage owner, Konference konference) {
+    public UdflugtUpdateWindow(String title, Stage owner, Udflugt udflugt) {
         this.initOwner(owner);
         this.initStyle(StageStyle.UTILITY);
         this.initModality(Modality.APPLICATION_MODAL);
@@ -23,7 +25,7 @@ public class UdflugtWindow extends Stage {
         this.setMinWidth(200);
         this.setResizable(false);
 
-        this.konference = konference;
+        this.udflugt = udflugt;
 
         this.setTitle(title);
         GridPane pane = new GridPane();
@@ -40,7 +42,7 @@ public class UdflugtWindow extends Stage {
 
     private DatePicker datePickerStartDato = new DatePicker();
 
-    private Konference konference;
+    private Udflugt udflugt;
 
 
     private void initContent(GridPane pane) {
@@ -81,7 +83,7 @@ public class UdflugtWindow extends Stage {
     private void cancelAction() {
         txfName.clear();
         txfPris.clear();
-        UdflugtWindow.this.hide();
+        UdflugtUpdateWindow.this.hide();
     }
 
     private void okAction() {
@@ -94,8 +96,8 @@ public class UdflugtWindow extends Stage {
         if (name.length() > 0 && pris >= 0 && startDato != null) {
             txfName.clear();
             txfPris.clear();
-            konference.createUdflugt(startDato, pris, name);
-            UdflugtWindow.this.hide();
+            Controller.updateUdflugt(udflugt, name, pris, startDato);
+            UdflugtUpdateWindow.this.hide();
 
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

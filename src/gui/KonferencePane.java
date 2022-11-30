@@ -19,6 +19,7 @@ public class KonferencePane extends GridPane {
     private KonferenceWindow konferenceWindow;
     private KonferenceUpdateWindow konferenceUpdateWindow;
     private UdflugtWindow udflugtWindow;
+    private UdflugtUpdateWindow udflugtUpdateWindow;
 
     public KonferencePane() {
         this.setPadding(new Insets(20));
@@ -134,7 +135,17 @@ public class KonferencePane extends GridPane {
     }
 
     private void updateUdflugtAction() {
+        Udflugt udflugt = lvwUdflugter.getSelectionModel().getSelectedItem();
+        if (udflugt != null) {
+            udflugtUpdateWindow = new UdflugtUpdateWindow("Opdatere Udflugt", new Stage(), udflugt);
+            udflugtUpdateWindow.showAndWait();
 
+            // Wait for the modal dialog to close
+
+            int selectIndex = lvwUdflugter.getSelectionModel().getSelectedIndex();
+            lvwUdflugter.getItems().setAll(lvwKonferencer.getSelectionModel().getSelectedItem().getUdflugter());
+            lvwUdflugter.getSelectionModel().select(selectIndex);
+        }
     }
 }
 

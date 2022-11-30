@@ -51,6 +51,18 @@ public class Udflugt {
         return navn;
     }
 
+    public void setDato(LocalDate dato) {
+        this.dato = dato;
+    }
+
+    public void setPris(double pris) {
+        this.pris = pris;
+    }
+
+    public void setNavn(String navn) {
+        this.navn = navn;
+    }
+
     //--------------------------------------------------------------------------------------------------------
 
 
