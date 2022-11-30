@@ -97,6 +97,18 @@ public class Hotel {
         return navn;
     }
 
+    public void setPris(double pris) {
+        this.pris = pris;
+    }
+
+    public void setPrisDobbeltVaerelse(double prisDobbeltVaerelse) {
+        this.prisDobbeltVaerelse = prisDobbeltVaerelse;
+    }
+
+    public void setNavn(String navn) {
+        this.navn = navn;
+    }
+
     @Override
     public String toString() {
         return navn;

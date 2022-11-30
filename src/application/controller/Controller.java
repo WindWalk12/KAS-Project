@@ -171,6 +171,12 @@ public class Controller {
         return Storage.getHoteller();
     }
 
+    public static void updateHotel (Hotel hotel, String name, double pris, double prisDobbeltVærelse){
+       hotel.setNavn(name);
+        hotel.setPris(pris);
+        hotel.setPrisDobbeltVaerelse(prisDobbeltVærelse);
+    }
+
     // -------------------------------------------------------------------------
 
     public static Service createService(String navn, double pris, Hotel hotel) {

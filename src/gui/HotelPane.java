@@ -102,8 +102,18 @@ public class HotelPane extends GridPane {
     }
 
     private void updateHotelAction() {
-    }
+        Hotel hotels = lvwHoteller.getSelectionModel().getSelectedItem();
+        if (hotels != null) {
+            HotelUpdateWindow hotelUpdateWindow = new HotelUpdateWindow("Updater Hotel", new Stage(), hotels);
+            hotelUpdateWindow.showAndWait();
 
+            // Wait for the modal dialog to close
+
+            int selectIndex = lvwHoteller.getSelectionModel().getSelectedIndex();
+            lvwHoteller.getItems().setAll(Controller.getHoteller());
+            lvwHoteller.getSelectionModel().select(selectIndex);
+        }
+    }
     private void selectedHotelChanged() {
         Hotel hotel = lvwHoteller.getSelectionModel().getSelectedItem();
         if (hotel != null) {
