@@ -13,11 +13,12 @@ import javafx.stage.Stage;
 public class KonferencePane extends GridPane {
     private ListView<Konference> lvwKonferencer;
     private ListView<Udflugt> lvwUdflugter;
-    private Button btnCreate, btnUpdate, btnTilm;
+    private Button btnCreate, btnUpdate, btnTilm, btnUdfCreate, btnUdfUpdate;
     private HBox btnKonfBox, btnUdflugtBox;
     private TilmeldningInputWindow tilmeldWindow;
     private KonferenceWindow konferenceWindow;
     private KonferenceUpdateWindow konferenceUpdateWindow;
+    private UdflugtWindow udflugtWindow;
 
     public KonferencePane() {
         this.setPadding(new Insets(20));
@@ -68,13 +69,13 @@ public class KonferencePane extends GridPane {
         this.add(btnUdflugtBox, 1, 4);
         btnUdflugtBox.setSpacing(20);
 
-        btnCreate = new Button("Opret");
-        btnUdflugtBox.getChildren().add(btnCreate);
-        btnCreate.setOnAction(event -> this.createUdflugtAction());
+        btnUdfCreate = new Button("Opret");
+        btnUdflugtBox.getChildren().add(btnUdfCreate);
+        btnUdfCreate.setOnAction(event -> this.createUdflugtAction());
 
-        btnUpdate = new Button("Opdater");
-        btnUdflugtBox.getChildren().add(btnUpdate);
-        btnUpdate.setOnAction(event -> this.updateUdflugtAction());
+        btnUdfUpdate = new Button("Opdater");
+        btnUdflugtBox.getChildren().add(btnUdfUpdate);
+        btnUdfUpdate.setOnAction(event -> this.updateUdflugtAction());
 
     }
 
@@ -119,7 +120,17 @@ public class KonferencePane extends GridPane {
     }
 
     private void createUdflugtAction() {
+        Konference konference = lvwKonferencer.getSelectionModel().getSelectedItem();
+        if (konference != null) {
+            udflugtWindow = new UdflugtWindow("Opret Udflugt", new Stage(), konference);
+            udflugtWindow.showAndWait();
 
+            // Wait for the modal dialog to close
+
+            int selectIndex = lvwKonferencer.getSelectionModel().getSelectedIndex();
+            lvwKonferencer.getItems().setAll(Controller.getKonferencerer());
+            lvwKonferencer.getSelectionModel().select(selectIndex);
+        }
     }
 
     private void updateUdflugtAction() {

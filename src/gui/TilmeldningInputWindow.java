@@ -388,6 +388,7 @@ public class TilmeldningInputWindow extends Stage {
                 vBoxServ.getChildren().add(chkServ[i]);
             }
         }
+        sizeToScene();
     }
 
     public void updateKonference() {
