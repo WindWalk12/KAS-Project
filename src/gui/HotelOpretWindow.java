@@ -13,11 +13,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.time.LocalDate;
+public class HotelOpretWindow extends Stage {
 
-public class HotelWindow extends Stage {
-
-    public HotelWindow (String title, Stage owner) {
+    public HotelOpretWindow(String title, Stage owner) {
         this.initOwner(owner);
         this.initStyle(StageStyle.UTILITY);
         this.initModality(Modality.APPLICATION_MODAL);
@@ -89,7 +87,7 @@ public class HotelWindow extends Stage {
         txfPris.clear();
         txfPrisDobbeltVærelse.clear();
         actualHotel = null;
-        HotelWindow.this.hide();
+        HotelOpretWindow.this.hide();
     }
 
     private void okAction() {
@@ -99,7 +97,7 @@ public class HotelWindow extends Stage {
 
         if (name.length() > 0) {
             txfName.clear();
-            HotelWindow.this.hide();
+            HotelOpretWindow.this.hide();
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Create Hotel");
@@ -111,7 +109,7 @@ public class HotelWindow extends Stage {
 
         if (pris.length() > 0) {
             txfPris.clear();
-            HotelWindow.this.hide();
+            HotelOpretWindow.this.hide();
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Create Hotel");
@@ -122,7 +120,7 @@ public class HotelWindow extends Stage {
 
         if (prisDobbelt.length() > 0) {
             txfPrisDobbeltVærelse.clear();
-            HotelWindow.this.hide();
+            HotelOpretWindow.this.hide();
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Create Hotel");

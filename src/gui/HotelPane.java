@@ -18,7 +18,7 @@ public class HotelPane extends GridPane {
     private Button btnCreate, btnUpdate;
     private HBox btnHoteBox, btnServBox;
 
-    private HotelWindow hotelWindow;
+    private HotelOpretWindow hotelWindow;
 
     public HotelPane() {
         this.setPadding(new Insets(20));
@@ -26,7 +26,7 @@ public class HotelPane extends GridPane {
         this.setVgap(10);
         this.setGridLinesVisible(false);
 
-        hotelWindow = new HotelWindow("Opret hotel",new Stage());
+        hotelWindow = new HotelOpretWindow("Opret hotel",new Stage());
 
         Label lblKonf = new Label("Hoteller:");
         this.add(lblKonf, 0, 0);
