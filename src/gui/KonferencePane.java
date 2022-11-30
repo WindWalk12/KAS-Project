@@ -137,7 +137,7 @@ public class KonferencePane extends GridPane {
     private void updateUdflugtAction() {
         Udflugt udflugt = lvwUdflugter.getSelectionModel().getSelectedItem();
         if (udflugt != null) {
-            udflugtUpdateWindow = new UdflugtUpdateWindow("Opdatere Udflugt", new Stage(), udflugt);
+            udflugtUpdateWindow = new UdflugtUpdateWindow("Opdater Udflugt", new Stage(), udflugt);
             udflugtUpdateWindow.showAndWait();
 
             // Wait for the modal dialog to close
