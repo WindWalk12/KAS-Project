@@ -2,20 +2,24 @@ package gui;
 
 import application.controller.Controller;
 import application.model.Hotel;
+import application.model.Konference;
 import application.model.Service;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 public class HotelPane extends GridPane {
     private ListView<Hotel> lvwHoteller;
     private ListView<Service> lvwServices;
-    private Button btnCreate, btnUpdate;
+    private Button btnCreate, btnUpdate, btnServiceCreate, btnServiceUpdate;
     private HBox btnHoteBox, btnServBox;
+    private ServiceWindow serviceWindow;
 
     public HotelPane() {
         this.setPadding(new Insets(20));
@@ -58,13 +62,13 @@ public class HotelPane extends GridPane {
         this.add(btnServBox, 1, 4);
         btnServBox.setSpacing(20);
 
-        btnCreate = new Button("Opret");
-        btnServBox.getChildren().add(btnCreate);
-        btnCreate.setOnAction(event -> this.createServAction());
+        btnServiceCreate = new Button("Opret");
+        btnServBox.getChildren().add(btnServiceCreate);
+        btnServiceCreate.setOnAction(event -> this.createServAction());
 
-        btnUpdate = new Button("Opdater");
-        btnServBox.getChildren().add(btnUpdate);
-        btnUpdate.setOnAction(event -> this.updateServAction());
+        btnServiceUpdate = new Button("Opdater");
+        btnServBox.getChildren().add(btnServiceUpdate);
+        btnServiceUpdate.setOnAction(event -> this.updateServAction());
 
     }
 
@@ -91,9 +95,26 @@ public class HotelPane extends GridPane {
 
     private void createServAction() {
 
+        Hotel selectedHotel = lvwHoteller.getSelectionModel().getSelectedItem();
+        if (selectedHotel != null) {
+            serviceWindow = new ServiceWindow("Opret Service", new Stage(), selectedHotel);
+            serviceWindow.showAndWait();
+            lvwServices.getItems().setAll(selectedHotel.getServices());
+        }
     }
-
     private void updateServAction() {
+        Service selectedService = lvwServices.getSelectionModel().getSelectedItem();
+        if (selectedService != null) {
+            ServiceUpdateWindow serviceUpdateWindow = new ServiceUpdateWindow("Opret Service", new Stage(), selectedService);
+            serviceUpdateWindow.showAndWait();
+
+            int selectIndex = lvwServices.getSelectionModel().getSelectedIndex();
+            lvwServices.getItems().setAll(lvwHoteller.getSelectionModel().getSelectedItem().getServices());
+            lvwServices.getSelectionModel().select(selectIndex);
+
+
+        }
+
 
     }
 }

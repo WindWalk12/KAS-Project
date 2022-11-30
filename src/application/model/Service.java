@@ -16,6 +16,14 @@ public class Service {
     }
     public String getNavn() { return navn; }
 
+    public void setPris(double pris) {
+        this.pris = pris;
+    }
+
+    public void setNavn(String navn) {
+        this.navn = navn;
+    }
+
     @Override
     public String toString() {
         return navn + " (" + pris + " dkk)";

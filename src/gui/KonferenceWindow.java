@@ -40,7 +40,6 @@ public class KonferenceWindow extends Stage {
     private final TextField txfAddress = new TextField();
     private final TextField txfPrisPrDag = new TextField();
     private final TextField txfAntalDage = new TextField();
-    private Konference actualKonference = null;
     private DatePicker datePickerStartDato = new DatePicker();
 
 
@@ -92,7 +91,6 @@ public class KonferenceWindow extends Stage {
         txfAddress.clear();
         txfPrisPrDag.clear();
         txfAntalDage.clear();
-        actualKonference = null;
         KonferenceWindow.this.hide();
     }
 
@@ -155,15 +153,10 @@ public class KonferenceWindow extends Stage {
         startDato = datePickerStartDato.getValue();
         double PrisPrDag = Double.parseDouble(prisPrDag);
         int antalDage = Integer.parseInt(dage);
-        //ved ikke hvordan man kan lave string om til double/int^
         Konference konference = Controller.createKonference(name, address, startDato, antalDage, PrisPrDag);
 
     }
 
     // -------------------------------------------------------------------------
 
-    public Konference getActualKonference() {
-        return actualKonference;
-    }
 }
-
