@@ -101,8 +101,8 @@ public class KonferenceWindow extends Stage {
 
         String name = txfName.getText().trim();
         String address = txfAddress.getText().trim();
-        double prisPrDag = txfPrisPrDag.getText();
-        int antalDage = txfAntalDage.getText().trim();
+        String prisPrDag = txfPrisPrDag.getText();
+        String dage = txfAntalDage.getText().trim();
 
         if (name.length() > 0) {
             txfName.clear();
@@ -129,7 +129,7 @@ public class KonferenceWindow extends Stage {
 
 
 
-        if (pris.length() > 0) {
+        if (prisPrDag.length() > 0) {
             txfPrisPrDag.clear();
             KonferenceWindow.this.hide();
         } else {
@@ -140,7 +140,7 @@ public class KonferenceWindow extends Stage {
             alert.show();
         }
 
-        if (antalDage.length() > 0) {
+        if (dage.length() > 0) {
             txfAntalDage.clear();
             KonferenceWindow.this.hide();
         } else {
@@ -153,8 +153,11 @@ public class KonferenceWindow extends Stage {
 
         LocalDate startDato;
         startDato = datePickerStartDato.getValue();
+        int pris = Integer.parseInt(prisPrDag);
+        double PrisPrDag = pris;
+        int antalDage = Integer.parseInt(dage);
         //ved ikke hvordan man kan lave string om til double/int^
-        Konference konference = Controller.createKonference(name, address, startDato, antalDage, prisPrDag);
+        Konference konference = Controller.createKonference(name, address, startDato, antalDage, PrisPrDag);
 
     }
 
