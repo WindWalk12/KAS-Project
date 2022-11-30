@@ -153,8 +153,7 @@ public class KonferenceWindow extends Stage {
 
         LocalDate startDato;
         startDato = datePickerStartDato.getValue();
-        int pris = Integer.parseInt(prisPrDag);
-        double PrisPrDag = pris;
+        double PrisPrDag = Double.parseDouble(prisPrDag);
         int antalDage = Integer.parseInt(dage);
         //ved ikke hvordan man kan lave string om til double/int^
         Konference konference = Controller.createKonference(name, address, startDato, antalDage, PrisPrDag);
